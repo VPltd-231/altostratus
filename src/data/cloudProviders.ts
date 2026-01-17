@@ -4,6 +4,7 @@ export interface CloudProvider {
   shortName: string;
   tagline: string;
   metaphor: string;
+  description: string; // 2-4 sentence summary
   colorClass: string;
   gradientClass: string;
   glowClass: string;
@@ -61,6 +62,7 @@ export const cloudProviders: CloudProvider[] = [
     shortName: 'AWS',
     tagline: 'The Programmable Data Center',
     metaphor: 'If cloud providers were cities, AWS would be a global metropolis—vast, complex, and endlessly capable.',
+    description: 'The industry titan that pioneered cloud computing. AWS offers unmatched breadth with 200+ services, global infrastructure spanning 30+ regions, and the deepest ecosystem for enterprise workloads. Perfect for teams who need infinite scalability and don\'t mind complexity.',
     colorClass: 'text-aws',
     gradientClass: 'gradient-aws',
     glowClass: 'glow-aws',
@@ -141,6 +143,7 @@ export const cloudProviders: CloudProvider[] = [
     shortName: 'GCP',
     tagline: 'The Developer Campus',
     metaphor: 'AWS gives you a city. GCP gives you a campus. Both can scale, but one is easier to navigate when you\'re starting out.',
+    description: 'Google\'s cloud runs on the same infrastructure powering Search, YouTube, and Gmail. It excels at data analytics, machine learning, and Kubernetes—originally developed at Google. Clean interfaces and transparent billing make it ideal for developer-focused teams.',
     colorClass: 'text-gcp',
     gradientClass: 'gradient-gcp',
     glowClass: 'glow-gcp',
@@ -223,6 +226,7 @@ export const cloudProviders: CloudProvider[] = [
     shortName: 'Azure',
     tagline: 'The Corporate District',
     metaphor: 'If AWS is a global city and GCP is a modern campus, Azure is a well-regulated corporate district—powerful, structured, and sometimes exhausting.',
+    description: 'Microsoft\'s enterprise cloud seamlessly integrates with Windows Server, Active Directory, and the entire Microsoft 365 ecosystem. The go-to choice for organizations already invested in Microsoft technologies. Strong hybrid capabilities bridge on-premises infrastructure.',
     colorClass: 'text-azure',
     gradientClass: 'gradient-azure',
     glowClass: 'glow-azure',
@@ -304,6 +308,7 @@ export const cloudProviders: CloudProvider[] = [
     shortName: 'OCI',
     tagline: 'The Industrial Warehouse',
     metaphor: 'Oracle Cloud is the quiet giant of free tiers. If AWS is a city and GCP is a campus, OCI is a warehouse full of industrial machinery—not pretty, but astonishingly capable.',
+    description: 'The hidden gem for budget-conscious engineers. OCI offers the most generous always-free tier in the industry—including 24GB ARM compute and 10TB monthly bandwidth. Built for serious workloads, not just trials. Perfect for self-managed production infrastructure.',
     colorClass: 'text-oracle',
     gradientClass: 'gradient-oracle',
     glowClass: 'glow-oracle',
@@ -380,6 +385,7 @@ export const cloudProviders: CloudProvider[] = [
     shortName: 'IBM',
     tagline: 'The Research Lab',
     metaphor: 'IBM Cloud is not trying to be AWS. It is a service platform, not a raw infrastructure playground. Purpose-built, carefully controlled, and powerful in the right context.',
+    description: 'IBM focuses on managed services rather than raw infrastructure. Exceptional for enterprise databases, API management, and AI/Watson capabilities. The Lite tier never expires and never auto-upgrades. Best suited for regulated industries and research workloads.',
     colorClass: 'text-ibm',
     gradientClass: 'gradient-ibm',
     glowClass: 'glow-ibm',
