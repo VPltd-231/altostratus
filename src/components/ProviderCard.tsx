@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Clock, CreditCard, Quote, Server, Database, HardDrive, Wifi } from 'lucide-react';
+import { ChevronRight, Clock, CreditCard, Quote, Server, Database, HardDrive, Wifi, ExternalLink } from 'lucide-react';
 import { CloudProvider } from '@/data/cloudProviders';
 import { CloudIcon } from './CloudIcon';
 import { Button } from './ui/button';
@@ -146,14 +146,26 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
             })}
           </div>
 
-          {/* Action button */}
-          <Button
-            onClick={() => onSelect(provider.id)}
-            className={`w-full group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-lg`}
-          >
-            <span>Explore {provider.shortName}</span>
-            <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
-          </Button>
+          {/* Action buttons */}
+          <div className="flex gap-2">
+            <Button
+              onClick={() => onSelect(provider.id)}
+              className={`flex-1 group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-lg`}
+            >
+              <span>Explore</span>
+              <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className={`group/signup border-2 hover:${provider.gradientClass} hover:text-white hover:border-transparent transition-all duration-300`}
+            >
+              <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
+                <span className="hidden sm:inline">Sign Up</span>
+                <ExternalLink className="w-4 h-4 sm:ml-1 group-hover/signup:rotate-12 transition-transform" />
+              </a>
+            </Button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
