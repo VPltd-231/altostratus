@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
+import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { ProviderCard } from '@/components/ProviderCard';
 import { ProviderDetails } from '@/components/ProviderDetails';
 import { ComparisonTable } from '@/components/ComparisonTable';
@@ -27,7 +28,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Global animated background */}
+      <AnimatedBackground />
+      
       <Navigation />
       
       {/* Hero Section */}
