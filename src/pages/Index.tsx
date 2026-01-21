@@ -72,63 +72,132 @@ const Index = () => {
       {/* Cloud Credits Hard Sell */}
       <CreditsHardSell />
 
-      {/* Quick Summary Section */}
-      <section className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
+      {/* Quick Summary Section - Modernized with Flip Cards */}
+      <section className="py-24 px-4 bg-secondary/30 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute top-10 right-[20%] w-64 h-64 bg-primary/10 rounded-full blur-[100px]"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute bottom-10 left-[15%] w-48 h-48 bg-oracle/10 rounded-full blur-[80px]"
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          />
+        </div>
+
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/20 mb-6"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Expert Picks</span>
+            </motion.div>
+
+            <h2 className="text-3xl sm:text-5xl font-bold mb-4">
               <span className="gradient-text">Quick</span> Recommendations
             </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-              {[
-                { 
-                  title: 'Best Free Tier Overall',
-                  provider: 'Oracle Cloud',
-                  reason: '10TB bandwidth, 24GB ARM compute, always free',
-                  color: 'border-oracle'
-                },
-                {
-                  title: 'Best for Beginners',
-                  provider: 'Google Cloud',
-                  reason: 'Clean UI, guardrails by default, $300 credits',
-                  color: 'border-gcp'
-                },
-                {
-                  title: 'Best for Enterprise',
-                  provider: 'Microsoft Azure',
-                  reason: 'Active Directory, hybrid cloud, .NET support',
-                  color: 'border-azure'
-                },
-                {
-                  title: 'Best for Scale',
-                  provider: 'AWS',
-                  reason: 'Deepest ecosystem, most services, global reach',
-                  color: 'border-aws'
-                },
-              ].map((rec, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`glass-card rounded-xl p-5 border-l-4 ${rec.color}`}
-                >
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                    {rec.title}
-                  </p>
-                  <p className="font-bold text-lg mb-1">{rec.provider}</p>
-                  <p className="text-sm text-muted-foreground">{rec.reason}</p>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Hover to reveal detailed insights for each use case
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { 
+                title: 'Best Free Tier Overall',
+                provider: 'Oracle Cloud',
+                reason: '10TB bandwidth, 24GB ARM compute, always free',
+                backText: 'Oracle offers the most generous always-free tier with ARM Ampere instances, massive bandwidth, and no forced upgrades. Perfect for long-term projects.',
+                gradient: 'from-oracle via-red-600 to-orange-500',
+                icon: '🏆'
+              },
+              {
+                title: 'Best for Beginners',
+                provider: 'Google Cloud',
+                reason: 'Clean UI, guardrails by default, $300 credits',
+                backText: 'GCP provides the smoothest onboarding with intuitive interfaces, automatic cost controls, and excellent documentation for newcomers.',
+                gradient: 'from-gcp via-blue-500 to-green-500',
+                icon: '🎯'
+              },
+              {
+                title: 'Best for Enterprise',
+                provider: 'Microsoft Azure',
+                reason: 'Active Directory, hybrid cloud, .NET support',
+                backText: 'Azure excels in enterprise environments with seamless Microsoft integration, hybrid cloud capabilities, and compliance certifications.',
+                gradient: 'from-azure via-blue-600 to-cyan-500',
+                icon: '🏢'
+              },
+              {
+                title: 'Best for Scale',
+                provider: 'AWS',
+                reason: 'Deepest ecosystem, most services, global reach',
+                backText: 'AWS offers unmatched service breadth with 200+ services, global infrastructure, and the most mature ecosystem for scaling applications.',
+                gradient: 'from-aws via-orange-500 to-yellow-500',
+                icon: '🚀'
+              },
+            ].map((rec, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                className="group h-48 perspective-1000"
+              >
+                <div className="relative w-full h-full transition-transform duration-700 preserve-3d group-hover:rotate-y-180">
+                  {/* Front of card */}
+                  <div className="absolute inset-0 backface-hidden">
+                    <div className={`h-full rounded-2xl p-[2px] bg-gradient-to-br ${rec.gradient}`}>
+                      <div className="h-full glass-card rounded-2xl p-6 flex flex-col justify-between bg-card/95">
+                        <div>
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                              {rec.title}
+                            </span>
+                            <span className="text-2xl">{rec.icon}</span>
+                          </div>
+                          <p className="font-bold text-2xl mb-2">{rec.provider}</p>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{rec.reason}</p>
+                        
+                        {/* Hover hint */}
+                        <motion.div 
+                          className="absolute bottom-3 right-3 text-xs text-muted-foreground/50"
+                          animate={{ opacity: [0.3, 0.7, 0.3] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          Hover for more →
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Back of card */}
+                  <div className="absolute inset-0 backface-hidden rotate-y-180">
+                    <div className={`h-full rounded-2xl bg-gradient-to-br ${rec.gradient} p-6 flex flex-col justify-center text-white`}>
+                      <div className="text-4xl mb-4">{rec.icon}</div>
+                      <p className="text-sm leading-relaxed font-medium">{rec.backText}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
