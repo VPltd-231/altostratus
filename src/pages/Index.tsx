@@ -5,6 +5,8 @@ import { Hero } from '@/components/Hero';
 import { ProviderCard } from '@/components/ProviderCard';
 import { ProviderDetails } from '@/components/ProviderDetails';
 import { ComparisonTable } from '@/components/ComparisonTable';
+import { PricingCalculator } from '@/components/PricingCalculator';
+import { CreditsHardSell } from '@/components/CreditsHardSell';
 import { Footer } from '@/components/Footer';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
 
@@ -63,6 +65,12 @@ const Index = () => {
 
       {/* Comparison Table */}
       <ComparisonTable />
+
+      {/* Pricing Calculator */}
+      <PricingCalculator />
+
+      {/* Cloud Credits Hard Sell */}
+      <CreditsHardSell />
 
       {/* Quick Summary Section */}
       <section className="py-20 px-4 bg-secondary/30">
