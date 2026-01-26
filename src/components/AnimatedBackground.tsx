@@ -50,9 +50,9 @@ const Hexagon = ({ size }: { size: number }) => (
 export const AnimatedBackground = () => {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Gradient orbs */}
+      {/* Gradient orbs - lighter theme */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]"
+        className="absolute w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px]"
         style={{ left: '-10%', top: '10%' }}
         animate={{
           x: [0, 100, 0],
@@ -62,7 +62,7 @@ export const AnimatedBackground = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full bg-gcp/5 blur-[120px]"
+        className="absolute w-[500px] h-[500px] rounded-full bg-gcp/10 blur-[120px]"
         style={{ right: '-5%', top: '40%' }}
         animate={{
           x: [0, -80, 0],
@@ -72,7 +72,7 @@ export const AnimatedBackground = () => {
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute w-[400px] h-[400px] rounded-full bg-oracle/5 blur-[100px]"
+        className="absolute w-[400px] h-[400px] rounded-full bg-oracle/10 blur-[100px]"
         style={{ left: '30%', bottom: '-10%' }}
         animate={{
           x: [0, 50, -50, 0],
@@ -82,17 +82,18 @@ export const AnimatedBackground = () => {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Floating shapes */}
+      {/* Floating shapes - with fallback opacity */}
       {shapes.map((shape, i) => (
         <motion.div
           key={`shape-${i}`}
-          className="absolute text-primary/10"
+          className="absolute text-primary/20"
           style={{ left: shape.x, top: shape.y }}
+          initial={{ opacity: 0.15 }}
           animate={{
             y: [0, -30, 0],
             x: [0, 15, -15, 0],
             rotate: [0, 180, 360],
-            opacity: [0.1, 0.2, 0.1],
+            opacity: [0.15, 0.3, 0.15],
           }}
           transition={{
             duration: shape.duration,
@@ -103,13 +104,13 @@ export const AnimatedBackground = () => {
         >
           {shape.type === 'circle' && (
             <div 
-              className="rounded-full border border-current" 
+              className="rounded-full border-2 border-current" 
               style={{ width: shape.size, height: shape.size }}
             />
           )}
           {shape.type === 'square' && (
             <div 
-              className="border border-current rotate-45" 
+              className="border-2 border-current rotate-45" 
               style={{ width: shape.size, height: shape.size }}
             />
           )}
@@ -118,17 +119,18 @@ export const AnimatedBackground = () => {
         </motion.div>
       ))}
 
-      {/* Floating icons */}
+      {/* Floating icons - with fallback visibility */}
       {floatingIcons.map((item, i) => (
         <motion.div
           key={`icon-${i}`}
-          className="absolute text-muted-foreground/15"
+          className="absolute text-muted-foreground/30"
           style={{ left: item.x, top: item.y }}
+          initial={{ opacity: 0.2 }}
           animate={{
             y: [0, -40, 0],
             x: [0, 20, -20, 0],
             rotate: [0, 10, -10, 0],
-            opacity: [0.1, 0.25, 0.1],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: item.duration,
@@ -141,28 +143,29 @@ export const AnimatedBackground = () => {
         </motion.div>
       ))}
 
-      {/* Animated grid lines */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.02]">
+      {/* Animated grid lines - more visible on light theme */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.04]">
         <defs>
           <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="0.8" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" className="text-foreground" />
+        <rect width="100%" height="100%" fill="url(#grid)" className="text-primary" />
       </svg>
 
-      {/* Floating particles */}
+      {/* Floating particles - more visible */}
       {Array.from({ length: 20 }).map((_, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 rounded-full bg-primary/20"
+          className="absolute w-1.5 h-1.5 rounded-full bg-primary/30"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
+          initial={{ opacity: 0.2 }}
           animate={{
             y: [0, -100, 0],
-            opacity: [0, 0.5, 0],
+            opacity: [0.2, 0.6, 0.2],
           }}
           transition={{
             duration: 8 + Math.random() * 10,

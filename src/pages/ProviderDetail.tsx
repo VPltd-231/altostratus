@@ -208,8 +208,8 @@ const ProviderDetail = () => {
 
             {provider.requirements.notes && (
               <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
-                <AlertTriangle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
-                <p className="text-xs text-yellow-200">{provider.requirements.notes}</p>
+                <AlertTriangle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
+                <p className="text-xs text-yellow-700">{provider.requirements.notes}</p>
               </div>
             )}
           </motion.section>
