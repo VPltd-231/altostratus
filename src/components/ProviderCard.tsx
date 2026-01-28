@@ -32,33 +32,25 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
-      className="group perspective-1000"
+      className="group"
     >
-      {/* 3D Card Container */}
+      {/* Card Container */}
       <motion.div
         whileHover={{ 
-          rotateY: 8,
-          rotateX: -5,
           scale: 1.02,
-          z: 50
+          y: -4
         }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="relative h-full preserve-3d"
-        style={{ transformStyle: 'preserve-3d' }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="relative h-full"
       >
         {/* Backdrop glow effect */}
         <div 
           className={`absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${provider.gradientClass}`}
-          style={{ transform: 'translateZ(-20px)' }}
         />
         
         {/* Main card */}
         <div 
-          className={`relative glass-card rounded-3xl p-7 h-full border-2 border-transparent transition-all duration-500 group-hover:border-${provider.id}/40 overflow-hidden`}
-          style={{ 
-            transform: 'translateZ(0)',
-            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
-          }}
+          className={`relative glass-card rounded-3xl p-7 h-full border-2 border-transparent transition-all duration-500 group-hover:border-${provider.id}/40 overflow-hidden shadow-lg hover:shadow-xl`}
         >
           {/* Background pattern */}
           <div 

@@ -71,7 +71,9 @@ const Index = () => {
       <ComparisonTable />
 
       {/* Pricing Calculator */}
-      <PricingCalculator />
+      <section id="pricing">
+        <PricingCalculator />
+      </section>
 
       {/* Cloud Credits Hard Sell */}
       <CreditsHardSell />
