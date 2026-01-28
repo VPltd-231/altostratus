@@ -1,12 +1,31 @@
-import { motion } from 'framer-motion';
-import { Cloud, Server, Database, Shield, Zap } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Cloud, Server, Database, Shield, Zap, ArrowDown } from 'lucide-react';
 import { CloudIcon } from './CloudIcon';
+import { Button } from './ui/button';
+import { useRef } from 'react';
 
 export const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
-      {/* Animated background grid */}
-      <div className="absolute inset-0 opacity-20">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
+      {/* Animated background grid with parallax */}
+      <motion.div className="absolute inset-0 opacity-20" style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}>
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
@@ -14,7 +33,7 @@ export const Hero = () => {
           `,
           backgroundSize: '50px 50px'
         }} />
-      </div>
+      </motion.div>
 
       {/* Floating cloud icons */}
       <motion.div 
@@ -57,8 +76,11 @@ export const Hero = () => {
         <CloudIcon provider="ibm" size={55} />
       </motion.div>
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      {/* Main content with parallax */}
+      <motion.div 
+        className="relative z-10 max-w-5xl mx-auto text-center"
+        style={{ y, opacity, scale }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,10 +99,27 @@ export const Hero = () => {
             <span className="text-foreground">Services Compared</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
             A practical, engineer-level breakdown of AWS, Google Cloud, Azure, Oracle, and IBM. 
             Understand what each platform really offers, their free tiers, and which one fits your needs.
           </p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-10"
+          >
+            <Button 
+              onClick={scrollToPricing}
+              size="lg"
+              className="group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Get Started
+              <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            </Button>
+          </motion.div>
         </motion.div>
 
         {/* Feature badges */}
@@ -133,21 +172,23 @@ export const Hero = () => {
           ))}
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-            <motion.div 
-              className="w-1.5 h-3 bg-primary rounded-full"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        style={{ opacity }}
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
+          <motion.div 
+            className="w-1.5 h-3 bg-primary rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };
