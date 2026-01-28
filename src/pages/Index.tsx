@@ -76,10 +76,12 @@ const Index = () => {
       </section>
 
       {/* Cloud Credits Hard Sell */}
-      <CreditsHardSell />
+      <section id="credits">
+        <CreditsHardSell />
+      </section>
 
       {/* Quick Summary Section - Modernized with Flip Cards */}
-      <section className="py-24 px-4 bg-secondary/30 relative overflow-hidden">
+      <section id="recommendations" className="py-24 px-4 bg-secondary/30 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div 
