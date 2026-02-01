@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { 
   Server, Database, Shield, Globe, Zap, 
   Cloud, HardDrive, GitBranch, BarChart3,
@@ -181,7 +181,34 @@ const categoryLabels: Record<string, string> = {
   integration: 'Integrations',
 };
 
-const NodeCard = ({ node, index }: { node: ArchitectureNode; index: number }) => {
+// Get all connected nodes (both directions)
+const getConnectedNodes = (nodeId: string): Set<string> => {
+  const connected = new Set<string>();
+  connected.add(nodeId);
+  
+  architectureNodes.forEach(node => {
+    // Direct connections from this node
+    if (node.id === nodeId) {
+      node.connections.forEach(c => connected.add(c));
+    }
+    // Nodes that connect TO this node
+    if (node.connections.includes(nodeId)) {
+      connected.add(node.id);
+    }
+  });
+  
+  return connected;
+};
+
+interface NodeCardProps {
+  node: ArchitectureNode;
+  index: number;
+  selectedNode: string | null;
+  connectedNodes: Set<string>;
+  onSelect: (id: string | null) => void;
+}
+
+const NodeCard = ({ node, index, selectedNode, connectedNodes, onSelect }: NodeCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -203,7 +230,14 @@ const NodeCard = ({ node, index }: { node: ArchitectureNode; index: number }) =>
     setIsHovered(false);
   };
 
+  const handleClick = () => {
+    onSelect(selectedNode === node.id ? null : node.id);
+  };
+
   const colors = categoryColors[node.category];
+  const isSelected = selectedNode === node.id;
+  const isConnected = connectedNodes.has(node.id);
+  const isDimmed = selectedNode !== null && !isConnected;
 
   return (
     <motion.div
@@ -217,34 +251,62 @@ const NodeCard = ({ node, index }: { node: ArchitectureNode; index: number }) =>
         top: `${node.position.y}%`,
         transform: 'translate(-50%, -50%)'
       }}
+      animate={{
+        opacity: isDimmed ? 0.3 : 1,
+        scale: isSelected ? 1.1 : 1,
+      }}
     >
       <motion.div
         className="relative perspective-1000 cursor-pointer"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
         style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
         whileHover={{ scale: 1.15, z: 50 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
+        {/* Selection ring */}
+        {isSelected && (
+          <motion.div
+            className={`absolute -inset-2 rounded-2xl bg-gradient-to-br ${colors.bg}`}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.4, scale: 1 }}
+            layoutId="selection-ring"
+          />
+        )}
+        
+        {/* Connected highlight */}
+        {isConnected && !isSelected && selectedNode !== null && (
+          <motion.div
+            className={`absolute -inset-1 rounded-xl border-2 ${colors.border}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            style={{ borderColor: 'hsl(var(--primary))' }}
+          />
+        )}
+        
         {/* Glow effect */}
         <motion.div
           className={`absolute inset-0 rounded-xl bg-gradient-to-br ${colors.bg} blur-xl`}
-          animate={{ opacity: isHovered ? 0.6 : 0.2, scale: isHovered ? 1.3 : 1 }}
+          animate={{ 
+            opacity: isHovered || isSelected ? 0.6 : 0.2, 
+            scale: isHovered || isSelected ? 1.3 : 1 
+          }}
           transition={{ duration: 0.3 }}
         />
         
         {/* Card */}
-        <div className={`relative glass-card rounded-xl p-3 ${colors.border} border-2 ${isHovered ? `shadow-xl ${colors.glow}` : ''}`}>
+        <div className={`relative glass-card rounded-xl p-3 ${colors.border} border-2 ${isHovered || isSelected ? `shadow-xl ${colors.glow}` : ''}`}>
           <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${colors.bg} flex items-center justify-center text-white mb-2`}>
             {node.icon}
           </div>
           <h4 className="text-xs font-semibold text-foreground whitespace-nowrap">{node.title}</h4>
           
-          {/* Expanded content on hover */}
+          {/* Expanded content on hover or select */}
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0, height: isHovered ? 'auto' : 0 }}
+            animate={{ opacity: isHovered || isSelected ? 1 : 0, height: isHovered || isSelected ? 'auto' : 0 }}
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
@@ -256,7 +318,7 @@ const NodeCard = ({ node, index }: { node: ArchitectureNode; index: number }) =>
         </div>
 
         {/* Floating particles on hover */}
-        {isHovered && (
+        {(isHovered || isSelected) && (
           <>
             {[...Array(4)].map((_, i) => (
               <motion.div
@@ -280,6 +342,40 @@ const NodeCard = ({ node, index }: { node: ArchitectureNode; index: number }) =>
 };
 
 export const CloudArchitecture = () => {
+  const [selectedNode, setSelectedNode] = useState<string | null>(null);
+  
+  const connectedNodes = useMemo(() => {
+    if (!selectedNode) return new Set<string>();
+    return getConnectedNodes(selectedNode);
+  }, [selectedNode]);
+
+  // Generate connection paths between selected node and its connections
+  const connectionPaths = useMemo(() => {
+    if (!selectedNode) return [];
+    
+    const selectedNodeData = architectureNodes.find(n => n.id === selectedNode);
+    if (!selectedNodeData) return [];
+    
+    const paths: { from: ArchitectureNode; to: ArchitectureNode; key: string }[] = [];
+    
+    // Outgoing connections
+    selectedNodeData.connections.forEach(targetId => {
+      const target = architectureNodes.find(n => n.id === targetId);
+      if (target) {
+        paths.push({ from: selectedNodeData, to: target, key: `${selectedNode}-${targetId}` });
+      }
+    });
+    
+    // Incoming connections
+    architectureNodes.forEach(node => {
+      if (node.connections.includes(selectedNode)) {
+        paths.push({ from: node, to: selectedNodeData, key: `${node.id}-${selectedNode}` });
+      }
+    });
+    
+    return paths;
+  }, [selectedNode]);
+
   return (
     <section className="py-24 px-4 relative overflow-hidden">
       {/* Background effects */}
@@ -325,7 +421,7 @@ export const CloudArchitecture = () => {
             <span className="gradient-text">E-Commerce</span> Cloud Stack
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Interactive visualization of a scalable cloud infrastructure. Hover on components to explore details.
+            Interactive visualization of a scalable cloud infrastructure. <span className="text-primary font-medium">Click on components</span> to explore connections.
           </p>
         </motion.div>
 
@@ -364,6 +460,12 @@ export const CloudArchitecture = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
           className="relative h-[600px] sm:h-[700px] glass-card rounded-3xl border border-border/60 overflow-hidden"
+          onClick={(e) => {
+            // Clear selection when clicking on background
+            if (e.target === e.currentTarget) {
+              setSelectedNode(null);
+            }
+          }}
         >
           {/* Grid background */}
           <div className="absolute inset-0 opacity-30">
@@ -377,7 +479,7 @@ export const CloudArchitecture = () => {
             </svg>
           </div>
 
-          {/* Connection lines - simplified visual representation */}
+          {/* Connection lines SVG */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none">
             <defs>
               <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -385,64 +487,184 @@ export const CloudArchitecture = () => {
                 <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
                 <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
               </linearGradient>
+              <linearGradient id="activeLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+              </linearGradient>
             </defs>
-            {/* Animated flow lines */}
-            <motion.path
-              d="M 10% 35% Q 30% 30% 50% 30%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2, delay: 0.5 }}
-            />
-            <motion.path
-              d="M 50% 30% Q 70% 30% 90% 25%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2, delay: 0.7 }}
-            />
-            <motion.path
-              d="M 50% 30% L 50% 55%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 0.9 }}
-            />
-            <motion.path
-              d="M 50% 55% Q 60% 50% 80% 50%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 1.1 }}
-            />
-            <motion.path
-              d="M 50% 55% L 50% 85%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 1.3 }}
-            />
+            
+            {/* Default flow lines (dimmed when selection active) */}
+            <g style={{ opacity: selectedNode ? 0.1 : 1 }}>
+              <motion.path
+                d="M 10% 35% Q 30% 30% 50% 30%"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, delay: 0.5 }}
+              />
+              <motion.path
+                d="M 50% 30% Q 70% 30% 90% 25%"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, delay: 0.7 }}
+              />
+              <motion.path
+                d="M 50% 30% L 50% 55%"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.9 }}
+              />
+              <motion.path
+                d="M 50% 55% Q 60% 50% 80% 50%"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 1.1 }}
+              />
+              <motion.path
+                d="M 50% 55% L 50% 85%"
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 1.3 }}
+              />
+            </g>
+            
+            {/* Active connection lines with animated flow */}
+            {connectionPaths.map((path, i) => {
+              const x1 = path.from.position.x;
+              const y1 = path.from.position.y;
+              const x2 = path.to.position.x;
+              const y2 = path.to.position.y;
+              const midX = (x1 + x2) / 2;
+              const midY = (y1 + y2) / 2;
+              const controlOffset = Math.abs(x2 - x1) > Math.abs(y2 - y1) ? 10 : 0;
+              
+              return (
+                <g key={path.key}>
+                  {/* Main path */}
+                  <motion.path
+                    d={`M ${x1}% ${y1}% Q ${midX}% ${midY + controlOffset}% ${x2}% ${y2}%`}
+                    stroke="url(#activeLineGradient)"
+                    strokeWidth="3"
+                    fill="none"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                  />
+                  
+                  {/* Animated flow particle */}
+                  <motion.circle
+                    r="4"
+                    fill="hsl(var(--primary))"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: [0, 1, 1, 0],
+                      offsetDistance: ['0%', '100%'],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                      ease: 'linear',
+                    }}
+                    style={{
+                      offsetPath: `path("M ${x1}% ${y1}% Q ${midX}% ${midY + controlOffset}% ${x2}% ${y2}%")`,
+                    }}
+                  />
+                  
+                  {/* Glow effect */}
+                  <motion.circle
+                    r="8"
+                    fill="hsl(var(--primary))"
+                    opacity="0.3"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: [0, 0.3, 0.3, 0],
+                      offsetDistance: ['0%', '100%'],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                      ease: 'linear',
+                    }}
+                    style={{
+                      offsetPath: `path("M ${x1}% ${y1}% Q ${midX}% ${midY + controlOffset}% ${x2}% ${y2}%")`,
+                      filter: 'blur(4px)',
+                    }}
+                  />
+                </g>
+              );
+            })}
           </svg>
 
           {/* Architecture nodes */}
           {architectureNodes.map((node, index) => (
-            <NodeCard key={node.id} node={node} index={index} />
+            <NodeCard 
+              key={node.id} 
+              node={node} 
+              index={index}
+              selectedNode={selectedNode}
+              connectedNodes={connectedNodes}
+              onSelect={setSelectedNode}
+            />
           ))}
+
+          {/* Selection info panel */}
+          {selectedNode && (
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="absolute top-4 left-4 glass-card rounded-xl p-4 border border-primary/30 max-w-xs"
+            >
+              <h4 className="text-sm font-semibold text-foreground mb-2">
+                🔗 Connected Components
+              </h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                Showing data flow paths for the selected component
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {Array.from(connectedNodes).map(nodeId => {
+                  const node = architectureNodes.find(n => n.id === nodeId);
+                  const colors = categoryColors[node?.category || 'compute'];
+                  return (
+                    <span 
+                      key={nodeId}
+                      className={`text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r ${colors.bg} text-white`}
+                    >
+                      {node?.title}
+                    </span>
+                  );
+                })}
+              </div>
+              <button
+                onClick={() => setSelectedNode(null)}
+                className="mt-3 text-xs text-primary hover:text-primary/80 underline"
+              >
+                Clear selection
+              </button>
+            </motion.div>
+          )}
 
           {/* Legend */}
           <motion.div
