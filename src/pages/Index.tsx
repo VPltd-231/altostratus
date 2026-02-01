@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
+import { CloudArchitecture } from '@/components/CloudArchitecture';
 import { ProviderCard } from '@/components/ProviderCard';
 import { ProviderDetails } from '@/components/ProviderDetails';
 import { ComparisonTable } from '@/components/ComparisonTable';
@@ -36,6 +37,9 @@ const Index = () => {
       
       {/* Hero Section */}
       <Hero />
+
+      {/* Cloud Architecture Visualization */}
+      <CloudArchitecture />
 
       {/* Providers Grid */}
       <section className="py-20 px-4" id="providers">
