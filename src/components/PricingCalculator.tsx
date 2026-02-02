@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, Server, HardDrive, Wifi, DollarSign } from 'lucide-react';
+import { Calculator, Server, HardDrive, Wifi, DollarSign, Database, Code, Zap } from 'lucide-react';
 import { Slider } from './ui/slider';
 import { CloudIcon } from './CloudIcon';
 
@@ -15,42 +15,48 @@ export const PricingCalculator: FC = () => {
   const [computeHours, setComputeHours] = useState([200]);
   const [storageGB, setStorageGB] = useState([50]);
   const [bandwidthGB, setBandwidthGB] = useState([100]);
+  const [databaseGB, setDatabaseGB] = useState([20]);
+  const [functionsM, setFunctionsM] = useState([1]);
+  const [apiRequestsK, setApiRequestsK] = useState([100]);
 
   // Simplified pricing estimates (illustrative)
   const calculateEstimates = (): PricingEstimate[] => {
     const compute = computeHours[0];
     const storage = storageGB[0];
     const bandwidth = bandwidthGB[0];
+    const database = databaseGB[0];
+    const functions = functionsM[0];
+    const apiRequests = apiRequestsK[0];
 
     const estimates: PricingEstimate[] = [
       {
         provider: 'AWS',
         id: 'aws',
-        monthly: compute * 0.0116 + storage * 0.023 + bandwidth * 0.09,
+        monthly: compute * 0.0116 + storage * 0.023 + bandwidth * 0.09 + database * 0.115 + functions * 0.20 + apiRequests * 0.0035,
         savings: compute <= 750 ? 'Free tier covers compute!' : ''
       },
       {
         provider: 'GCP',
         id: 'gcp',
-        monthly: compute * 0.0104 + storage * 0.02 + bandwidth * 0.12,
+        monthly: compute * 0.0104 + storage * 0.02 + bandwidth * 0.12 + database * 0.10 + functions * 0.16 + apiRequests * 0.003,
         savings: '$300 credits available'
       },
       {
         provider: 'Azure',
         id: 'azure',
-        monthly: compute * 0.0114 + storage * 0.0184 + bandwidth * 0.087,
+        monthly: compute * 0.0114 + storage * 0.0184 + bandwidth * 0.087 + database * 0.12 + functions * 0.18 + apiRequests * 0.0036,
         savings: '$200 credits available'
       },
       {
         provider: 'Oracle',
         id: 'oracle',
-        monthly: compute * 0.015 + storage * 0.0255 + Math.max(0, bandwidth - 10000) * 0.0085,
+        monthly: compute * 0.015 + storage * 0.0255 + Math.max(0, bandwidth - 10000) * 0.0085 + database * 0.095 + functions * 0.20 + apiRequests * 0.003,
         savings: '10TB bandwidth FREE!'
       },
       {
         provider: 'IBM',
         id: 'ibm',
-        monthly: compute * 0.02 + storage * 0.03 + bandwidth * 0.09,
+        monthly: compute * 0.02 + storage * 0.03 + bandwidth * 0.09 + database * 0.13 + functions * 0.25 + apiRequests * 0.004,
         savings: 'Lite tier available'
       },
     ];
@@ -164,6 +170,78 @@ export const PricingCalculator: FC = () => {
                 <div className="flex justify-between mt-2 text-xs text-muted-foreground">
                   <span>0 GB</span>
                   <span>1,000 GB</span>
+                </div>
+              </div>
+
+              {/* Database */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-oracle/20">
+                      <Database className="w-5 h-5 text-oracle" />
+                    </div>
+                    <span className="font-semibold">Database</span>
+                  </div>
+                  <span className="text-2xl font-bold text-oracle">{databaseGB[0]}<span className="text-sm text-muted-foreground"> GB</span></span>
+                </div>
+                <Slider
+                  value={databaseGB}
+                  onValueChange={setDatabaseGB}
+                  max={200}
+                  step={5}
+                  className="w-full"
+                />
+                <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                  <span>0 GB</span>
+                  <span>200 GB</span>
+                </div>
+              </div>
+
+              {/* Serverless Functions */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-purple-500/20">
+                      <Code className="w-5 h-5 text-purple-500" />
+                    </div>
+                    <span className="font-semibold">Functions</span>
+                  </div>
+                  <span className="text-2xl font-bold text-purple-500">{functionsM[0]}<span className="text-sm text-muted-foreground">M inv</span></span>
+                </div>
+                <Slider
+                  value={functionsM}
+                  onValueChange={setFunctionsM}
+                  max={10}
+                  step={0.5}
+                  className="w-full"
+                />
+                <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                  <span>0</span>
+                  <span>10M invocations</span>
+                </div>
+              </div>
+
+              {/* API Requests */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-emerald-500/20">
+                      <Zap className="w-5 h-5 text-emerald-500" />
+                    </div>
+                    <span className="font-semibold">API Requests</span>
+                  </div>
+                  <span className="text-2xl font-bold text-emerald-500">{apiRequestsK[0]}<span className="text-sm text-muted-foreground">K/mo</span></span>
+                </div>
+                <Slider
+                  value={apiRequestsK}
+                  onValueChange={setApiRequestsK}
+                  max={1000}
+                  step={10}
+                  className="w-full"
+                />
+                <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                  <span>0</span>
+                  <span>1M requests</span>
                 </div>
               </div>
             </div>
