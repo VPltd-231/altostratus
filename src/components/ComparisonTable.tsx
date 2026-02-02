@@ -21,7 +21,7 @@ const comparisonData: Record<ComparisonCategory, ComparisonRow[]> = {
     { feature: 'Free VM Instance', aws: '750 hrs/mo (12 mo)', gcp: 'e2-micro (Always)', azure: '750 hrs/mo (12 mo)', oracle: '2 AMD + ARM 24GB', ibm: 'PaaS only', highlight: 'oracle' },
     { feature: 'Serverless Functions', aws: '1M/month', gcp: '2M/month', azure: '1M/month', oracle: 'Limited', ibm: 'Limited', highlight: 'gcp' },
     { feature: 'ARM Support', aws: true, gcp: true, azure: true, oracle: true, ibm: false },
-    { feature: 'Persistent Servers', aws: true, gcp: true, azure: true, oracle: true, ibm: false },
+    { feature: 'Always-on', aws: true, gcp: true, azure: true, oracle: true, ibm: false },
   ],
   storage: [
     { feature: 'Object Storage', aws: '5 GB', gcp: '5 GB', azure: '5 GB', oracle: 'Limited', ibm: 'Limited' },
@@ -81,7 +81,7 @@ export const ComparisonTable: FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="gradient-text">Side-by-Side</span> Comparison
+            <span className="gradient-text">Platform</span> Comparison
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Compare free tier offerings across all major cloud providers at a glance.

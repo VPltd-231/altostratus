@@ -18,43 +18,45 @@ interface ArchitectureNode {
 }
 
 const architectureNodes: ArchitectureNode[] = [
-  // Core Compute Layer
-  { 
-    id: 'compute', 
-    icon: <Server className="w-6 h-6" />, 
-    title: 'Auto-Scaling Compute', 
-    description: 'Virtual servers & containers that scale with demand during sales events',
-    category: 'compute',
-    position: { x: 50, y: 30 },
-    connections: ['loadbalancer', 'database', 'cache']
-  },
-  { 
-    id: 'loadbalancer', 
-    icon: <RefreshCw className="w-6 h-6" />, 
-    title: 'Load Balancer', 
-    description: 'Distributes traffic across instances for high availability',
-    category: 'network',
-    position: { x: 50, y: 10 },
-    connections: ['cdn', 'compute']
-  },
-  // Storage & CDN
-  { 
-    id: 'storage', 
-    icon: <HardDrive className="w-6 h-6" />, 
-    title: 'Object Storage', 
-    description: 'Product images, videos, and static assets stored globally',
-    category: 'storage',
-    position: { x: 20, y: 50 },
-    connections: ['cdn']
-  },
+  // Entry Layer (Top)
   { 
     id: 'cdn', 
     icon: <Globe className="w-6 h-6" />, 
     title: 'Global CDN', 
     description: 'Content delivery network for fast worldwide load times 🌍',
     category: 'network',
-    position: { x: 20, y: 20 },
+    position: { x: 50, y: 8 },
     connections: ['loadbalancer']
+  },
+  // Load Balancing Layer
+  { 
+    id: 'loadbalancer', 
+    icon: <RefreshCw className="w-6 h-6" />, 
+    title: 'Load Balancer', 
+    description: 'Distributes traffic across instances for high availability',
+    category: 'network',
+    position: { x: 50, y: 22 },
+    connections: ['compute']
+  },
+  // Compute Layer
+  { 
+    id: 'compute', 
+    icon: <Server className="w-6 h-6" />, 
+    title: 'Auto-Scaling Compute', 
+    description: 'Virtual servers & containers that scale with demand during sales events',
+    category: 'compute',
+    position: { x: 50, y: 38 },
+    connections: ['cache', 'database', 'security']
+  },
+  // Caching Layer (beside compute)
+  { 
+    id: 'cache', 
+    icon: <Zap className="w-6 h-6" />, 
+    title: 'NoSQL Cache', 
+    description: 'Fast session data & product recommendations',
+    category: 'database',
+    position: { x: 25, y: 38 },
+    connections: []
   },
   // Database Layer
   { 
@@ -63,17 +65,18 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Managed Database', 
     description: 'Customer data, orders & inventory with automated backups',
     category: 'database',
-    position: { x: 80, y: 50 },
+    position: { x: 50, y: 55 },
     connections: ['backup']
   },
+  // Storage Layer
   { 
-    id: 'cache', 
-    icon: <Zap className="w-6 h-6" />, 
-    title: 'NoSQL Cache', 
-    description: 'Fast session data & product recommendations',
-    category: 'database',
-    position: { x: 65, y: 45 },
-    connections: ['compute']
+    id: 'storage', 
+    icon: <HardDrive className="w-6 h-6" />, 
+    title: 'Object Storage', 
+    description: 'Product images, videos, and static assets stored globally',
+    category: 'storage',
+    position: { x: 75, y: 38 },
+    connections: ['cdn']
   },
   { 
     id: 'backup', 
@@ -81,18 +84,18 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Cross-Region Replication', 
     description: 'Automated backups protect against data loss 🛡️',
     category: 'storage',
-    position: { x: 80, y: 70 },
+    position: { x: 75, y: 55 },
     connections: []
   },
-  // Security
+  // Security Layer
   { 
     id: 'security', 
     icon: <Shield className="w-6 h-6" />, 
     title: 'Security Layer', 
     description: 'IAM, encryption & firewall rules for data protection',
     category: 'security',
-    position: { x: 50, y: 55 },
-    connections: ['compute', 'database']
+    position: { x: 25, y: 55 },
+    connections: ['encryption']
   },
   { 
     id: 'encryption', 
@@ -100,17 +103,17 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Data Encryption', 
     description: 'Payment & personal data encrypted at rest and in transit',
     category: 'security',
-    position: { x: 35, y: 65 },
-    connections: ['security']
+    position: { x: 25, y: 72 },
+    connections: []
   },
-  // DevOps
+  // DevOps Layer (Bottom)
   { 
     id: 'cicd', 
     icon: <GitBranch className="w-6 h-6" />, 
     title: 'CI/CD Pipeline', 
     description: 'Automated deployments, multiple releases per week 🚀',
     category: 'devops',
-    position: { x: 15, y: 80 },
+    position: { x: 40, y: 85 },
     connections: ['compute']
   },
   { 
@@ -119,8 +122,8 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Monitoring & Logging', 
     description: 'Real-time performance tracking & cost optimization',
     category: 'devops',
-    position: { x: 50, y: 85 },
-    connections: ['compute', 'database']
+    position: { x: 60, y: 85 },
+    connections: ['analytics']
   },
   { 
     id: 'analytics', 
@@ -128,18 +131,18 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Cloud Analytics', 
     description: 'Track spending, errors & performance metrics',
     category: 'devops',
-    position: { x: 85, y: 85 },
-    connections: ['monitoring']
+    position: { x: 75, y: 72 },
+    connections: []
   },
-  // Integrations
+  // Integrations (Sides)
   { 
     id: 'payments', 
     icon: <CreditCard className="w-6 h-6" />, 
     title: 'Payment Gateway', 
     description: 'Secure integration with payment processors 💳',
     category: 'integration',
-    position: { x: 10, y: 35 },
-    connections: ['compute', 'security']
+    position: { x: 12, y: 22 },
+    connections: ['security']
   },
   { 
     id: 'logistics', 
@@ -147,7 +150,7 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Logistics API', 
     description: 'Third-party shipping & fulfillment services',
     category: 'integration',
-    position: { x: 90, y: 25 },
+    position: { x: 88, y: 22 },
     connections: ['compute']
   },
   { 
@@ -156,7 +159,7 @@ const architectureNodes: ArchitectureNode[] = [
     title: 'Marketing Tools', 
     description: 'Email, analytics & CRM integrations',
     category: 'integration',
-    position: { x: 90, y: 10 },
+    position: { x: 88, y: 8 },
     connections: ['database']
   },
 ];
@@ -418,7 +421,7 @@ export const CloudArchitecture = () => {
           </motion.div>
 
           <h2 className="text-3xl sm:text-5xl font-bold mb-4">
-            <span className="gradient-text">E-Commerce</span> Cloud Stack
+            <span className="gradient-text">Cloud Hosting</span> Tech Stack
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Interactive visualization of a scalable cloud infrastructure. <span className="text-primary font-medium">Click on components</span> to explore connections.
@@ -548,7 +551,7 @@ export const CloudArchitecture = () => {
               />
             </g>
             
-            {/* Active connection lines with animated flow */}
+            {/* Active connection lines with animated flow and labels */}
             {connectionPaths.map((path, i) => {
               const x1 = path.from.position.x;
               const y1 = path.from.position.y;
@@ -557,6 +560,28 @@ export const CloudArchitecture = () => {
               const midX = (x1 + x2) / 2;
               const midY = (y1 + y2) / 2;
               const controlOffset = Math.abs(x2 - x1) > Math.abs(y2 - y1) ? 10 : 0;
+              
+              // Generate connection label
+              const getConnectionLabel = (fromId: string, toId: string): string => {
+                const labels: Record<string, string> = {
+                  'cdn-loadbalancer': 'HTTP/S',
+                  'loadbalancer-compute': 'TCP/IP',
+                  'compute-database': 'SQL',
+                  'compute-cache': 'Redis',
+                  'compute-security': 'Auth',
+                  'database-backup': 'Sync',
+                  'storage-cdn': 'Assets',
+                  'security-encryption': 'TLS',
+                  'cicd-compute': 'Deploy',
+                  'monitoring-analytics': 'Metrics',
+                  'payments-security': 'PCI',
+                  'logistics-compute': 'REST',
+                  'marketing-database': 'API',
+                };
+                return labels[`${fromId}-${toId}`] || labels[`${toId}-${fromId}`] || 'Data';
+              };
+              
+              const label = getConnectionLabel(path.from.id, path.to.id);
               
               return (
                 <g key={path.key}>
@@ -570,6 +595,34 @@ export const CloudArchitecture = () => {
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                   />
+                  
+                  {/* Connection label */}
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                  >
+                    <rect
+                      x={`${midX - 3}%`}
+                      y={`${midY + controlOffset / 2 - 2}%`}
+                      width="6%"
+                      height="4%"
+                      rx="8"
+                      fill="hsl(var(--card))"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth="1"
+                      className="opacity-90"
+                    />
+                    <text
+                      x={`${midX}%`}
+                      y={`${midY + controlOffset / 2 + 0.5}%`}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="fill-primary text-[10px] font-semibold"
+                    >
+                      {label}
+                    </text>
+                  </motion.g>
                   
                   {/* Animated flow particle */}
                   <motion.circle
