@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { ChevronRight, Clock, CreditCard, Quote, Server, Database, HardDrive, Wifi, ExternalLink } from 'lucide-react';
 import { CloudProvider } from '@/data/cloudProviders';
 import { CloudIcon } from './CloudIcon';
@@ -20,12 +19,6 @@ const specItems = [
 ];
 
 export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect }) => {
-  const navigate = useNavigate();
-
-  const handleExplore = () => {
-    navigate(`/provider/${provider.id}`);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, rotateX: 15 }}
@@ -148,11 +141,13 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
           {/* Action buttons */}
           <div className="flex gap-2">
             <Button
-              onClick={handleExplore}
+              asChild
               className={`flex-1 group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-lg`}
             >
-              <span>Explore</span>
-              <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+              <a href={provider.exploreUrl} target="_blank" rel="noopener noreferrer">
+                <span>Explore</span>
+                <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+              </a>
             </Button>
             <Button
               asChild
