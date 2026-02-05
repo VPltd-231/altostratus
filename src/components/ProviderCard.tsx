@@ -139,20 +139,18 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-2">
+          <div className="relative z-10 flex gap-2">
             <Button
-              asChild
-              className={`flex-1 group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-lg`}
+              onClick={() => onSelect(provider.id)}
+              className={`flex-1 group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-lg cursor-pointer`}
             >
-              <a href={provider.exploreUrl} target="_blank" rel="noopener noreferrer">
-                <span>Explore</span>
-                <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
-              </a>
+              <span>Explore</span>
+              <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
             </Button>
             <Button
               asChild
               variant="outline"
-              className={`group/signup border-2 hover:${provider.gradientClass} hover:text-white hover:border-transparent transition-all duration-300`}
+              className={`relative z-10 group/signup border-2 hover:${provider.gradientClass} hover:text-white hover:border-transparent transition-all duration-300 cursor-pointer`}
             >
               <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
                 <span className="hidden sm:inline">Sign Up</span>
