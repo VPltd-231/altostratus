@@ -9,7 +9,7 @@ const navLinks = [
   { href: '#comparison', label: 'Compare' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#credits', label: 'Credits' },
-  { href: '#recommendations', label: 'Picks' },
+  { href: '#recommendations', label: 'Tips' },
 ];
 
 export const Navigation: FC = () => {

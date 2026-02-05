@@ -117,11 +117,11 @@ const Index = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Expert Picks</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pro Tips</span>
             </motion.div>
 
             <h2 className="text-3xl sm:text-5xl font-bold mb-4">
-              <span className="gradient-text">Quick</span> Recommendations
+              <span className="gradient-text">Smart</span> Choices
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Hover to reveal detailed insights for each use case
@@ -131,33 +131,33 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               { 
-                title: 'Best Free Tier Overall',
+                title: 'Top Free Tier',
                 provider: 'Oracle Cloud',
-                reason: '10TB bandwidth, 24GB ARM compute, always free',
+                reason: '10TB bandwidth • 24GB ARM compute • Always free',
                 backText: 'Oracle offers the most generous always-free tier with ARM Ampere instances, massive bandwidth, and no forced upgrades. Perfect for long-term projects.',
                 gradient: 'from-oracle via-red-600 to-orange-500',
                 icon: '🏆'
               },
               {
-                title: 'Best for Beginners',
+                title: 'Easiest Start',
                 provider: 'Google Cloud',
-                reason: 'Clean UI, guardrails by default, $300 credits',
+                reason: 'Clean UI • Built-in guardrails • $300 credits',
                 backText: 'GCP provides the smoothest onboarding with intuitive interfaces, automatic cost controls, and excellent documentation for newcomers.',
                 gradient: 'from-gcp via-blue-500 to-green-500',
                 icon: '🎯'
               },
               {
-                title: 'Best for Enterprise',
+                title: 'Enterprise Ready',
                 provider: 'Microsoft Azure',
-                reason: 'Active Directory, hybrid cloud, .NET support',
+                reason: 'Active Directory • Hybrid cloud • .NET native',
                 backText: 'Azure excels in enterprise environments with seamless Microsoft integration, hybrid cloud capabilities, and compliance certifications.',
                 gradient: 'from-azure via-blue-600 to-cyan-500',
                 icon: '🏢'
               },
               {
-                title: 'Best for Scale',
+                title: 'Maximum Scale',
                 provider: 'AWS',
-                reason: 'Deepest ecosystem, most services, global reach',
+                reason: '200+ services • Global reach • Mature ecosystem',
                 backText: 'AWS offers unmatched service breadth with 200+ services, global infrastructure, and the most mature ecosystem for scaling applications.',
                 gradient: 'from-aws via-orange-500 to-yellow-500',
                 icon: '🚀'
