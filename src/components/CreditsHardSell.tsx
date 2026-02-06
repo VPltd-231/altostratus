@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Zap, Gift, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, Users, X } from 'lucide-react';
+import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, Users, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -23,25 +23,28 @@ export const CreditsHardSell: FC = () => {
 
   const upsellFeatures = [
     { 
-      icon: Gift, 
-      title: 'Startup Programs', 
-      desc: "Access every major provider's startup initiative",
-      gradient: 'from-primary via-primary/80 to-blue-600',
-      glow: 'group-hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]'
+      icon: TrendingUp, 
+      title: 'Funding Options', 
+      desc: 'Learn how to take advantage of promotions',
+      gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',
+      glow: 'group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]',
+      bgAccent: 'bg-violet-500/10'
     },
     { 
-      icon: TrendingUp, 
-      title: 'Step-by-Step', 
-      desc: 'Exact application strategies that work',
-      gradient: 'from-gcp via-gcp/80 to-green-500',
-      glow: 'group-hover:shadow-[0_0_40px_rgba(66,133,244,0.4)]'
+      icon: Zap, 
+      title: 'Quick Wins', 
+      desc: 'Proven strategies that deliver results fast',
+      gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
+      glow: 'group-hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]',
+      bgAccent: 'bg-emerald-500/10'
     },
     { 
       icon: Rocket, 
       title: 'Stack Credits', 
       desc: 'Combine multiple programs legally',
-      gradient: 'from-oracle via-orange-500 to-yellow-500',
-      glow: 'group-hover:shadow-[0_0_40px_rgba(199,70,52,0.4)]'
+      gradient: 'from-amber-500 via-orange-500 to-rose-500',
+      glow: 'group-hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]',
+      bgAccent: 'bg-amber-500/10'
     },
   ];
 
@@ -121,28 +124,32 @@ export const CreditsHardSell: FC = () => {
             {upsellFeatures.map((feature, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                whileHover={{ scale: 1.05, y: -8 }}
-                className={`group relative rounded-2xl p-[2px] transition-all duration-500 ${feature.glow}`}
+                transition={{ 
+                  delay: i * 0.2,
+                  duration: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                whileHover={{ scale: 1.03, y: -6 }}
+                className={`group relative rounded-2xl overflow-hidden transition-all duration-500 ${feature.glow}`}
               >
-                {/* Gradient border */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-300`} />
+                {/* Soft background accent */}
+                <div className={`absolute inset-0 ${feature.bgAccent} opacity-50 group-hover:opacity-80 transition-opacity duration-300`} />
+                
+                {/* Gradient border line at top */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`} />
                 
                 {/* Inner content */}
-                <div className="relative glass-card rounded-2xl p-6 h-full bg-card/95 backdrop-blur-xl">
-                  {/* Icon with gradient background */}
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                    <feature.icon className="w-7 h-7 text-white" />
+                <div className="relative glass-card rounded-2xl p-6 h-full border border-border/40 bg-card/80 backdrop-blur-xl">
+                  {/* Icon with soft gradient background */}
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:scale-110 group-hover:rotate-2 transition-all duration-300`}>
+                    <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   
-                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.desc}</p>
-                  
-                  {/* Hover shine effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <h3 className="font-semibold text-base mb-2 text-foreground">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
