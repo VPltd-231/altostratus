@@ -157,9 +157,14 @@ export const CreditsHardSell: FC = () => {
 
           {/* Restyled CTA Section */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ 
+              delay: 0.4,
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
             className="relative rounded-3xl p-[2px] bg-gradient-to-r from-primary via-gcp to-azure"
           >
             <div className="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden bg-card/98">
@@ -216,9 +221,16 @@ export const CreditsHardSell: FC = () => {
                         </span>
                       </Button>
                       
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl line-through text-muted-foreground/50">$49</span>
-                        <span className="text-3xl font-black bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">FREE</span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl line-through text-muted-foreground/50">$59</span>
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="font-semibold px-6 py-6 text-base rounded-xl border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                        >
+                          <Sparkles className="w-4 h-4 mr-2" />
+                          Sneak Peek
+                        </Button>
                       </div>
                     </motion.div>
                   ) : (
