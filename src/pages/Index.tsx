@@ -48,6 +48,11 @@ const Index = () => {
       <Navigation />
       <Hero />
 
+      {/* Animated Lottie showcase - just below the fold */}
+      <Suspense fallback={<SectionFallback />}>
+        <LottieShowcase />
+      </Suspense>
+
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />
 
@@ -55,7 +60,9 @@ const Index = () => {
       <ComparisonTable />
 
       {/* Cloud Architecture - moved down */}
-      <CloudArchitecture />
+      <Suspense fallback={<SectionFallback />}>
+        <CloudArchitecture />
+      </Suspense>
 
       {/* Providers Grid */}
       <section className="py-20 px-4" id="providers">
@@ -89,16 +96,22 @@ const Index = () => {
 
       {/* Pricing Calculator */}
       <section id="pricing">
-        <PricingCalculator />
+        <Suspense fallback={<SectionFallback />}>
+          <PricingCalculator />
+        </Suspense>
       </section>
 
       {/* Cloud Credits Hard Sell */}
       <section id="credits">
-        <CreditsHardSell />
+        <Suspense fallback={<SectionFallback />}>
+          <CreditsHardSell />
+        </Suspense>
       </section>
 
       {/* Customer Benefits & Data Transfer */}
-      <CustomerBenefits />
+      <Suspense fallback={<SectionFallback />}>
+        <CustomerBenefits />
+      </Suspense>
 
       <Footer />
 
