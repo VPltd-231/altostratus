@@ -88,7 +88,7 @@ export const Footer: FC = () => {
             >
               <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Why CloudCompare
+                Why RunRateHost
               </span>
             </motion.div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">
@@ -166,7 +166,7 @@ export const Footer: FC = () => {
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-gcp flex items-center justify-center">
                   <Cloud className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">CloudCompare</span>
+                <span className="text-lg font-bold">RunRateHost</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                 The most comprehensive cloud provider comparison platform. Make informed decisions 

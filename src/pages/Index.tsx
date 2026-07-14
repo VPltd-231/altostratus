@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
-import { CloudArchitecture } from '@/components/CloudArchitecture';
 import { ProviderCard } from '@/components/ProviderCard';
 import { ProviderDetails } from '@/components/ProviderDetails';
 import { ComparisonTable } from '@/components/ComparisonTable';
-import { PricingCalculator } from '@/components/PricingCalculator';
-import { CreditsHardSell } from '@/components/CreditsHardSell';
-import { CustomerBenefits } from '@/components/CustomerBenefits';
 import { Footer } from '@/components/Footer';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
+
+// Lazy-load below-the-fold sections to reduce initial JS
+const LottieShowcase = lazy(() => import('@/components/LottieShowcase'));
+const CloudArchitecture = lazy(() =>
+  import('@/components/CloudArchitecture').then((m) => ({ default: m.CloudArchitecture }))
+);
+const PricingCalculator = lazy(() =>
+  import('@/components/PricingCalculator').then((m) => ({ default: m.PricingCalculator }))
+);
+const CreditsHardSell = lazy(() =>
+  import('@/components/CreditsHardSell').then((m) => ({ default: m.CreditsHardSell }))
+);
+const CustomerBenefits = lazy(() =>
+  import('@/components/CustomerBenefits').then((m) => ({ default: m.CustomerBenefits }))
+);
+
+const SectionFallback = () => <div className="min-h-[300px]" aria-hidden />;
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<CloudProvider | null>(null);
@@ -35,6 +48,11 @@ const Index = () => {
       <Navigation />
       <Hero />
 
+      {/* Animated Lottie showcase - just below the fold */}
+      <Suspense fallback={<SectionFallback />}>
+        <LottieShowcase />
+      </Suspense>
+
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />
 
@@ -42,7 +60,9 @@ const Index = () => {
       <ComparisonTable />
 
       {/* Cloud Architecture - moved down */}
-      <CloudArchitecture />
+      <Suspense fallback={<SectionFallback />}>
+        <CloudArchitecture />
+      </Suspense>
 
       {/* Providers Grid */}
       <section className="py-20 px-4" id="providers">
@@ -76,16 +96,22 @@ const Index = () => {
 
       {/* Pricing Calculator */}
       <section id="pricing">
-        <PricingCalculator />
+        <Suspense fallback={<SectionFallback />}>
+          <PricingCalculator />
+        </Suspense>
       </section>
 
       {/* Cloud Credits Hard Sell */}
       <section id="credits">
-        <CreditsHardSell />
+        <Suspense fallback={<SectionFallback />}>
+          <CreditsHardSell />
+        </Suspense>
       </section>
 
       {/* Customer Benefits & Data Transfer */}
-      <CustomerBenefits />
+      <Suspense fallback={<SectionFallback />}>
+        <CustomerBenefits />
+      </Suspense>
 
       <Footer />
 
