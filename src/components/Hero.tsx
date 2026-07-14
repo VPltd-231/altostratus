@@ -89,19 +89,19 @@ export const Hero = () => {
           <div className="flex items-center justify-center gap-3 mb-6">
             <Cloud className="w-10 h-10 text-primary" />
             <span className="text-sm font-mono uppercase tracking-widest text-muted-foreground">
-              Infrastructure Comparison Guide
+              RunRateHost · Cloud Cost Intelligence
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-            <span className="gradient-text">Cloud Hosting</span>
+            <span className="gradient-text">Save On Your</span>
             <br />
-            <span className="text-foreground">Services Compared</span>
+            <span className="text-foreground">Cloud Hosting Infrastructure</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-            A practical, engineer-level breakdown of AWS, Google Cloud, Azure, Oracle, and IBM. 
-            Understand what each platform really offers, their free tiers, and which one fits your needs.
+            RunRateHost benchmarks AWS, Google Cloud, Azure, Oracle, and IBM side-by-side —
+            uncover free tiers, hidden fees, and the fastest path to a lower monthly run-rate.
           </p>
 
           {/* CTA Button */}
