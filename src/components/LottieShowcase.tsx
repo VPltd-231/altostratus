@@ -19,18 +19,18 @@ export const LottieShowcase = () => {
         className="relative z-10 max-w-5xl mx-auto text-center"
       >
         <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-          Powered by Modern Infrastructure
+          Connected Cloud Infrastructure
         </span>
         <h2 className="mt-3 text-2xl sm:text-4xl font-bold">
-          <span className="gradient-text">Real-time</span> Cloud Intelligence
+          <span className="gradient-text">Unified</span> Cloud Connectivity
         </h2>
         <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-          Compare providers, forecast spend, and pick the right stack — visualized live.
+          See how workloads, devices, and providers link together through modern, encrypted cloud pathways.
         </p>
 
         <div className="mt-8 mx-auto w-full max-w-2xl aspect-[16/10] rounded-2xl glass-card overflow-hidden border border-border/40">
           <DotLottieReact
-            src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie"
+            src="https://assets-v2.lottiefiles.com/a/7df71b6e-c672-11ee-95fb-6f78396fdeb3/g0CUieSuhu.lottie"
             loop
             autoplay
           />
