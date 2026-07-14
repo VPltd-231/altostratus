@@ -166,7 +166,7 @@ export const Footer: FC = () => {
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-gcp flex items-center justify-center">
                   <Cloud className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">CloudCompare</span>
+                <span className="text-lg font-bold">RunRateHost</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                 The most comprehensive cloud provider comparison platform. Make informed decisions 
