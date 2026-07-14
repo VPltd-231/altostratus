@@ -88,7 +88,7 @@ export const Footer: FC = () => {
             >
               <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Why CloudCompare
+                Why RunRateHost
               </span>
             </motion.div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">
