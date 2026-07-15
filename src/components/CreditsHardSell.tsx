@@ -345,6 +345,41 @@ export const CreditsHardSell: FC = () => {
               </div>
             </div>
           </motion.div>
+
+          {/* Secondary CTA #2 - Final conversion push */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3 max-w-3xl mx-auto"
+          >
+            <div className="md:col-span-2 flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-primary/10 via-gcp/10 to-azure/10 border border-primary/30 text-left">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-azure shadow-lg shrink-0">
+                <DollarSign className="w-6 h-6 text-white" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-foreground">Founders unlock $100K+ faster</p>
+                <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
+                  <Timer className="w-3 h-3" />
+                  Avg. approval in 5 days · No dilution · Stack across providers
+                </p>
+              </div>
+            </div>
+            <Button
+              onClick={() => setShowEmailForm(true)}
+              size="lg"
+              className="h-full min-h-[76px] bg-gradient-to-br from-primary via-gcp to-azure text-white font-bold rounded-2xl hover:shadow-[0_0_35px_rgba(59,130,246,0.5)] transition-all group"
+            >
+              <span className="flex flex-col items-center leading-tight">
+                <span className="flex items-center gap-1.5">
+                  <Rocket className="w-4 h-4" />
+                  Unlock $100K
+                </span>
+                <span className="text-[10px] font-normal opacity-90 mt-0.5">Free playbook →</span>
+              </span>
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
     </section>
