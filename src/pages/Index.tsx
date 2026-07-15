@@ -10,7 +10,6 @@ import { Footer } from '@/components/Footer';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
 
 // Lazy-load below-the-fold sections to reduce initial JS
-const LottieShowcase = lazy(() => import('@/components/LottieShowcase'));
 const CloudArchitecture = lazy(() =>
   import('@/components/CloudArchitecture').then((m) => ({ default: m.CloudArchitecture }))
 );
@@ -48,10 +47,6 @@ const Index = () => {
       <Navigation />
       <Hero />
 
-      {/* Animated Lottie showcase - just below the fold */}
-      <Suspense fallback={<SectionFallback />}>
-        <LottieShowcase />
-      </Suspense>
 
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />

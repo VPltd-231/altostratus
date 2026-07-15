@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, Users, X } from 'lucide-react';
+import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, Users, X, Flame, Timer, Gift, DollarSign } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -113,11 +113,41 @@ export const CreditsHardSell: FC = () => {
             <span className="text-foreground">in Cloud Credits</span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
             The complete playbook for startups, developers, and enterprises to secure 
             <span className="text-foreground font-semibold"> 5 to 6 figures</span> in free cloud 
             credits from AWS, Google Cloud, Azure, and more.
           </p>
+
+          {/* Secondary CTA #1 - Urgency banner above feature grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="mb-12 inline-flex flex-wrap items-center justify-center gap-4 px-6 py-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-rose-500/10 border border-amber-500/30 backdrop-blur-sm"
+          >
+            <div className="flex items-center gap-2">
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Flame className="w-5 h-5 text-orange-500" />
+              </motion.div>
+              <span className="text-sm font-bold text-foreground">
+                Q3 2026 Bonus: <span className="text-orange-500">+$25K in stackable perks</span>
+              </span>
+            </div>
+            <Button
+              onClick={() => setShowEmailForm(true)}
+              size="sm"
+              className="bg-gradient-to-r from-orange-500 to-rose-500 text-white font-semibold rounded-xl hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] transition-all"
+            >
+              <Gift className="w-4 h-4 mr-1.5" />
+              Claim Bonus
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
+          </motion.div>
 
           {/* Redesigned Upsell Feature Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
@@ -314,6 +344,41 @@ export const CreditsHardSell: FC = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+
+          {/* Secondary CTA #2 - Final conversion push */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3 max-w-3xl mx-auto"
+          >
+            <div className="md:col-span-2 flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-primary/10 via-gcp/10 to-azure/10 border border-primary/30 text-left">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-azure shadow-lg shrink-0">
+                <DollarSign className="w-6 h-6 text-white" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-foreground">Founders unlock $100K+ faster</p>
+                <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
+                  <Timer className="w-3 h-3" />
+                  Avg. approval in 5 days · No dilution · Stack across providers
+                </p>
+              </div>
+            </div>
+            <Button
+              onClick={() => setShowEmailForm(true)}
+              size="lg"
+              className="h-full min-h-[76px] bg-gradient-to-br from-primary via-gcp to-azure text-white font-bold rounded-2xl hover:shadow-[0_0_35px_rgba(59,130,246,0.5)] transition-all group"
+            >
+              <span className="flex flex-col items-center leading-tight">
+                <span className="flex items-center gap-1.5">
+                  <Rocket className="w-4 h-4" />
+                  Unlock $100K
+                </span>
+                <span className="text-[10px] font-normal opacity-90 mt-0.5">Free playbook →</span>
+              </span>
+            </Button>
           </motion.div>
         </motion.div>
       </div>
