@@ -47,10 +47,6 @@ const Index = () => {
       <Navigation />
       <Hero />
 
-      {/* Animated Lottie showcase - just below the fold */}
-      <Suspense fallback={<SectionFallback />}>
-        <LottieShowcase />
-      </Suspense>
 
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />
