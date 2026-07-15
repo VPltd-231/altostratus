@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, Server, Database, Globe, ArrowRight, CheckCircle2, Quote } from 'lucide-react';
+import { Shield, Lock, Eye, Database, Globe, ArrowRight, CheckCircle2, Quote } from 'lucide-react';
 
 const benefits = [
   {
@@ -46,148 +46,6 @@ const testimonials = [
   },
 ];
 
-// Platform nodes for the animated connection scheme
-const platformNodes = [
-  { id: 'aws', label: 'AWS', x: 15, y: 25, color: 'hsl(var(--aws))' },
-  { id: 'gcp', label: 'GCP', x: 85, y: 20, color: 'hsl(var(--gcp))' },
-  { id: 'azure', label: 'Azure', x: 50, y: 10, color: 'hsl(var(--azure))' },
-  { id: 'oracle', label: 'Oracle', x: 20, y: 75, color: 'hsl(var(--oracle))' },
-  { id: 'hub', label: 'Your Data', x: 50, y: 50, color: 'hsl(var(--primary))' },
-  { id: 'ibm', label: 'IBM', x: 80, y: 70, color: 'hsl(var(--ibm, 210 100% 50%))' },
-];
-
-const connections = [
-  { from: 'hub', to: 'aws', protocol: 'TLS 1.3' },
-  { from: 'hub', to: 'gcp', protocol: 'mTLS' },
-  { from: 'hub', to: 'azure', protocol: 'IPsec' },
-  { from: 'hub', to: 'oracle', protocol: 'TLS 1.3' },
-  { from: 'hub', to: 'ibm', protocol: 'SSL/TLS' },
-  { from: 'aws', to: 'gcp', protocol: 'VPN' },
-  { from: 'azure', to: 'oracle', protocol: 'Peering' },
-];
-
-const DataTransferScheme: FC = () => {
-  const getNode = (id: string) => platformNodes.find(n => n.id === id)!;
-
-  return (
-    <div className="relative w-full h-80 sm:h-96 rounded-2xl glass-card border border-border/50 overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Animated connection lines */}
-        {connections.map((conn, i) => {
-          const from = getNode(conn.from);
-          const to = getNode(conn.to);
-          return (
-            <g key={i}>
-              <motion.line
-                x1={from.x} y1={from.y}
-                x2={to.x} y2={to.y}
-                stroke="hsl(var(--primary))"
-                strokeWidth="0.3"
-                strokeOpacity={0.3}
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: i * 0.15 }}
-              />
-              {/* Animated data packet */}
-              <motion.circle
-                r="0.8"
-                fill="hsl(var(--primary))"
-                initial={{ opacity: 0 }}
-                animate={{
-                  cx: [from.x, to.x],
-                  cy: [from.y, to.y],
-                  opacity: [0, 1, 1, 0],
-                }}
-                transition={{
-                  duration: 2 + i * 0.3,
-                  repeat: Infinity,
-                  delay: i * 0.5,
-                  ease: 'easeInOut',
-                }}
-              />
-              {/* Protocol label */}
-              <text
-                x={(from.x + to.x) / 2}
-                y={(from.y + to.y) / 2 - 2}
-                textAnchor="middle"
-                fill="hsl(var(--muted-foreground))"
-                fontSize="2.2"
-                fontFamily="monospace"
-                opacity={0.6}
-              >
-                {conn.protocol}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-
-      {/* Platform nodes */}
-      {platformNodes.map((node, i) => (
-        <motion.div
-          key={node.id}
-          className="absolute flex flex-col items-center"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: 'spring', stiffness: 200, delay: 0.3 + i * 0.1 }}
-        >
-          <motion.div
-            className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-lg ${
-              node.id === 'hub' ? 'ring-2 ring-primary/50' : ''
-            }`}
-            style={{ backgroundColor: node.color }}
-            whileHover={{ scale: 1.15 }}
-            animate={node.id === 'hub' ? {
-              boxShadow: [
-                '0 0 0 0 hsla(var(--primary), 0.4)',
-                '0 0 0 10px hsla(var(--primary), 0)',
-              ],
-            } : {}}
-            transition={node.id === 'hub' ? { duration: 2, repeat: Infinity } : {}}
-          >
-            {node.id === 'hub' ? <Database className="w-5 h-5 sm:w-6 sm:h-6" /> : 
-             <Server className="w-4 h-4 sm:w-5 sm:h-5" />}
-          </motion.div>
-          <span className="mt-1 text-[10px] sm:text-xs font-semibold text-foreground whitespace-nowrap">
-            {node.label}
-          </span>
-        </motion.div>
-      ))}
-
-      {/* Legend */}
-      <div className="absolute bottom-3 left-3 flex items-center gap-3 text-[10px] text-muted-foreground">
-        <div className="flex items-center gap-1">
-          <div className="w-6 h-px bg-primary/50" />
-          <span>Encrypted Channel</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <motion.div
-            className="w-2 h-2 rounded-full bg-primary"
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-          <span>Data in Transit</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const CustomerBenefits: FC = () => {
   return (
     <section className="py-24 px-4 relative overflow-hidden" id="benefits">
@@ -229,7 +87,7 @@ export const CustomerBenefits: FC = () => {
             <span className="gradient-text">Trusted</span> Infrastructure
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Your data is your most valuable business asset. Here's how multi-cloud architecture 
+            Your data is your most valuable business asset. Here's how multi-cloud architecture
             enforces proper data hygiene across every touchpoint.
           </p>
         </motion.div>
@@ -264,26 +122,6 @@ export const CustomerBenefits: FC = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Data Transfer Connection Scheme */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-20"
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-2">
-              <span className="gradient-text">Multi-Platform</span> Data Flow
-            </h3>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-              Secure, encrypted channels connect your infrastructure across providers — 
-              shared technical standards ensure data integrity at every hop.
-            </p>
-          </div>
-          <DataTransferScheme />
-        </motion.div>
 
         {/* Testimonials */}
         <motion.div
