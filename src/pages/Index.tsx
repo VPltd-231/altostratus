@@ -1,5 +1,6 @@
-import { useState, lazy, Suspense } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Layers } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
@@ -7,26 +8,15 @@ import { ProviderCard } from '@/components/ProviderCard';
 import { ProviderDetails } from '@/components/ProviderDetails';
 import { ComparisonTable } from '@/components/ComparisonTable';
 import { Footer } from '@/components/Footer';
+import { CloudArchitecture } from '@/components/CloudArchitecture';
+import { PricingCalculator } from '@/components/PricingCalculator';
+import { CreditsHardSell } from '@/components/CreditsHardSell';
+import { CustomerBenefits } from '@/components/CustomerBenefits';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
-
-// Lazy-load below-the-fold sections to reduce initial JS
-const CloudArchitecture = lazy(() =>
-  import('@/components/CloudArchitecture').then((m) => ({ default: m.CloudArchitecture }))
-);
-const PricingCalculator = lazy(() =>
-  import('@/components/PricingCalculator').then((m) => ({ default: m.PricingCalculator }))
-);
-const CreditsHardSell = lazy(() =>
-  import('@/components/CreditsHardSell').then((m) => ({ default: m.CreditsHardSell }))
-);
-const CustomerBenefits = lazy(() =>
-  import('@/components/CustomerBenefits').then((m) => ({ default: m.CustomerBenefits }))
-);
-
-const SectionFallback = () => <div className="min-h-[300px]" aria-hidden />;
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<CloudProvider | null>(null);
+  const [stackOpen, setStackOpen] = useState(false);
 
   const handleSelectProvider = (id: string) => {
     const provider = cloudProviders.find(p => p.id === id);
@@ -47,17 +37,55 @@ const Index = () => {
       <Navigation />
       <Hero />
 
-
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />
 
-      {/* Platform Comparison - moved up */}
+      {/* Platform Comparison */}
       <ComparisonTable />
 
-      {/* Cloud Architecture - moved down */}
-      <Suspense fallback={<SectionFallback />}>
-        <CloudArchitecture />
-      </Suspense>
+      {/* Cloud Architecture - collapsible */}
+      <section className="py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <button
+            onClick={() => setStackOpen((v) => !v)}
+            aria-expanded={stackOpen}
+            aria-controls="tech-stack-panel"
+            className="w-full glass-card rounded-2xl px-6 py-5 flex items-center justify-between gap-4 hover:border-primary/40 transition-colors group"
+          >
+            <div className="flex items-center gap-3 text-left">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                <Layers className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg sm:text-xl font-bold">Cloud Hosting Tech Stack</h2>
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  Interactive architecture overview — {stackOpen ? 'click to hide' : 'click to explore'}
+                </p>
+              </div>
+            </div>
+            <ChevronDown
+              className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
+                stackOpen ? 'rotate-180 text-primary' : ''
+              }`}
+            />
+          </button>
+
+          <AnimatePresence initial={false}>
+            {stackOpen && (
+              <motion.div
+                id="tech-stack-panel"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <CloudArchitecture />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
 
       {/* Providers Grid */}
       <section className="py-20 px-4" id="providers">
@@ -65,7 +93,7 @@ const Index = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px -10% 0px' }}
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -89,24 +117,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing Calculator */}
       <section id="pricing">
-        <Suspense fallback={<SectionFallback />}>
-          <PricingCalculator />
-        </Suspense>
+        <PricingCalculator />
       </section>
 
-      {/* Cloud Credits Hard Sell */}
       <section id="credits">
-        <Suspense fallback={<SectionFallback />}>
-          <CreditsHardSell />
-        </Suspense>
+        <CreditsHardSell />
       </section>
 
-      {/* Customer Benefits & Data Transfer */}
-      <Suspense fallback={<SectionFallback />}>
-        <CustomerBenefits />
-      </Suspense>
+      <CustomerBenefits />
 
       <Footer />
 
@@ -120,16 +139,15 @@ const Index = () => {
   );
 };
 
-/* Smart Choices Section - extracted from inline */
 const SmartChoices = () => (
   <section id="recommendations" className="py-24 px-4 bg-secondary/30 relative overflow-hidden">
     <div className="absolute inset-0 pointer-events-none">
-      <motion.div 
+      <motion.div
         className="absolute top-10 right-[20%] w-64 h-64 bg-primary/10 rounded-full blur-[100px]"
         animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
-      <motion.div 
+      <motion.div
         className="absolute bottom-10 left-[15%] w-48 h-48 bg-oracle/10 rounded-full blur-[80px]"
         animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }}
         transition={{ duration: 6, repeat: Infinity }}
@@ -140,13 +158,14 @@ const SmartChoices = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
         className="text-center mb-12"
       >
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 200, delay: 0.1 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/20 mb-6"
         >
           <span className="relative flex h-2 w-2">
@@ -166,7 +185,7 @@ const SmartChoices = () => (
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[
-          { 
+          {
             title: 'Top Free Tier', provider: 'Oracle Cloud',
             reason: '10TB bandwidth • 24GB ARM compute • Always free',
             backText: 'Oracle offers the most generous always-free tier with ARM Ampere instances, massive bandwidth, and no forced upgrades. Perfect for long-term projects.',
@@ -195,8 +214,8 @@ const SmartChoices = () => (
             key={i}
             initial={{ opacity: 0, y: 20, rotateX: -15 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+            viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+            transition={{ delay: i * 0.05, type: 'spring', stiffness: 100 }}
             className="group h-48 perspective-1000"
           >
             <div className="relative w-full h-full transition-transform duration-700 preserve-3d group-hover:rotate-y-180">
@@ -211,7 +230,7 @@ const SmartChoices = () => (
                       <p className="font-bold text-2xl mb-2">{rec.provider}</p>
                     </div>
                     <p className="text-sm text-muted-foreground">{rec.reason}</p>
-                    <motion.div 
+                    <motion.div
                       className="absolute bottom-3 right-3 text-xs text-muted-foreground/50"
                       animate={{ opacity: [0.3, 0.7, 0.3] }}
                       transition={{ duration: 2, repeat: Infinity }}
