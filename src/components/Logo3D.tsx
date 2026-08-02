@@ -4,7 +4,7 @@ import { Cloud } from 'lucide-react';
 
 export const Logo3D: FC = () => {
   return (
-    <a href="#" className="flex items-center gap-3 group">
+    <a href="#" className="flex items-center gap-3 group notranslate" translate="no">
       {/* 3D Rotating Cloud Container */}
       <div className="relative w-10 h-10 perspective-1000">
         {/* Orbiting mini clouds */}
