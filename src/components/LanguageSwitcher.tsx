@@ -1,19 +1,23 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Globe, Check, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/hooks/use-language';
 import { languages, localizedPath } from '@/lib/languages';
+import { setTranslateCookie } from '@/components/GoogleTranslate';
 
 export const LanguageSwitcher = () => {
   const { language, route } = useLanguage();
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const select = (code: string) => {
     setOpen(false);
-    navigate(localizedPath(route.split('#')[0] || '/', code));
+    if (code === language.code) return;
+    // The Google widget applies its language at document load, so switching
+    // language performs a real navigation to the localized URL.
+    setTranslateCookie(code);
+    window.location.assign(localizedPath(route.split('#')[0] || '/', code));
   };
+
 
   return (
     <div className="relative notranslate" translate="no">
