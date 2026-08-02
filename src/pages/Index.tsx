@@ -176,7 +176,7 @@ const SmartChoices = () => (
         </motion.div>
 
         <h2 className="text-3xl sm:text-5xl font-bold mb-4">
-          <span className="gradient-text">Smart</span> Choices
+          <span className="gradient-text">Feature</span> Cards
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
           Hover to reveal detailed insights for each use case

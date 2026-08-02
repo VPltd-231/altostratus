@@ -135,7 +135,7 @@ export const CustomerBenefits: FC = () => {
               What <span className="gradient-text">Buyers</span> Say
             </h3>
             <p className="text-muted-foreground text-sm">
-              Real feedback from business owners who prioritized data hygiene
+              {"\n"}
             </p>
           </div>
 
