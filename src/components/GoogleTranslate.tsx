@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLanguage } from '@/hooks/use-language';
 
 declare global {
@@ -10,7 +10,8 @@ declare global {
 
 const SCRIPT_ID = 'google-translate-script';
 
-const setCookie = (value: string) => {
+export const setTranslateCookie = (code: string) => {
+  const value = code === 'en' ? '/en/en' : `/en/${code}`;
   const host = window.location.hostname;
   document.cookie = `googtrans=${value};path=/`;
   document.cookie = `googtrans=${value};path=/;domain=${host}`;
@@ -18,24 +19,28 @@ const setCookie = (value: string) => {
 };
 
 /**
- * Loads the Google Website Translator widget once and keeps the rendered page
- * in sync with the language segment of the URL. English is the source language
- * and never goes through the widget.
+ * Loads the Google Website Translator widget once. The widget reads the
+ * `googtrans` cookie at boot, so the language segment of the URL is written to
+ * the cookie before the script initialises. English is the source language.
  */
 export const GoogleTranslate = () => {
   const { language } = useLanguage();
+  const bootLanguage = useRef(language.code);
 
   useEffect(() => {
-    if (document.getElementById(SCRIPT_ID)) return;
+    setTranslateCookie(language.code);
+
+    if (document.getElementById(SCRIPT_ID)) {
+      // Language changed after boot (e.g. browser back/forward) — the widget
+      // can only re-run against the cookie on a fresh document.
+      if (bootLanguage.current !== language.code) window.location.reload();
+      return;
+    }
 
     window.googleTranslateElementInit = () => {
       if (!window.google?.translate?.TranslateElement) return;
       new window.google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          autoDisplay: false,
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
+        { pageLanguage: 'en', autoDisplay: false },
         'google_translate_element'
       );
     };
@@ -45,26 +50,6 @@ export const GoogleTranslate = () => {
     script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     script.async = true;
     document.body.appendChild(script);
-  }, []);
-
-  useEffect(() => {
-    const target = language.code;
-    setCookie(target === 'en' ? '/en/en' : `/en/${target}`);
-
-    let attempts = 0;
-    const apply = () => {
-      const select = document.querySelector<HTMLSelectElement>('select.goog-te-combo');
-      if (!select) {
-        if (attempts++ < 40) window.setTimeout(apply, 250);
-        return;
-      }
-      const value = target === 'en' ? '' : target;
-      if (select.value === value) return;
-      select.value = value;
-      select.dispatchEvent(new Event('change'));
-    };
-
-    apply();
   }, [language.code]);
 
   return <div id="google_translate_element" className="hidden" aria-hidden="true" />;
