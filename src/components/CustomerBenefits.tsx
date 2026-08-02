@@ -28,19 +28,19 @@ const benefits = [
 const testimonials = [
   {
     quote: "Migrating to a multi-cloud setup cut our infrastructure costs by 40% while improving our disaster recovery posture. The data hygiene practices we adopted changed everything.",
-    author: "Sarah Chen",
+    author: "Sam L.",
     role: "CTO, FinScale Solutions",
     rating: 5,
   },
   {
     quote: "As a business owner, I needed to understand where my customer data lived and who could access it. This guide gave me the vocabulary to hold my engineering team accountable.",
-    author: "Marcus Rivera",
+    author: "Darren G",
     role: "Founder, ShopStream",
     rating: 5,
   },
   {
     quote: "The comparison tools helped us choose the right provider mix. We now run production on AWS with Oracle's free tier handling our staging environments — zero additional cost.",
-    author: "Aisha Patel",
+    author: "Richard X",
     role: "VP Engineering, DataBridge",
     rating: 5,
   },
