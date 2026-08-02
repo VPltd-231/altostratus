@@ -436,7 +436,7 @@ const ProviderDetail = () => {
               variant="outline"
               size="lg"
             >
-              <Link to="/#providers">
+              <Link to={`${localizedPath("/", language.code)}#providers`}>
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Compare All Providers
               </Link>
