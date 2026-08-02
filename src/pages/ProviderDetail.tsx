@@ -74,26 +74,35 @@ const ProviderDetail = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
+      <SeoHead
+        route={`/provider/${provider.id}`}
+        titleSuffix={provider.name}
+        description={`${provider.name} free tier, requirements, strengths and limitations — analysed by RunRateHost.`}
+      />
       <AnimatedBackground />
       
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-50 glass-card border-b border-border/30">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <Link to={localizedPath('/', language.code)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span className="hidden sm:inline">Back to All Providers</span>
           </Link>
-          <Button
-            asChild
-            className={`${provider.gradientClass} text-white border-0 gap-2`}
-          >
-            <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
-              Sign Up for {provider.shortName}
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Button
+              asChild
+              className={`${provider.gradientClass} text-white border-0 gap-2`}
+            >
+              <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
+                Sign Up for {provider.shortName}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </Button>
+          </div>
         </div>
       </nav>
+
 
       <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
         {/* Hero Section */}
