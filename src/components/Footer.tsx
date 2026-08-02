@@ -92,9 +92,9 @@ export const Footer: FC = () => {
               </span>
             </motion.div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-              Everything You Need to{' '}
+              Make Informed{' '}
               <span className="bg-gradient-to-r from-primary via-gcp to-azure bg-clip-text text-transparent">
-                Choose Wisely
+                Choices
               </span>
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-sm">
