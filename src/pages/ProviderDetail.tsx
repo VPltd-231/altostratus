@@ -12,14 +12,20 @@ import { UseCaseValidator } from '@/components/UseCaseValidator';
 import { SignupWalkthrough } from '@/components/SignupWalkthrough';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { SeoHead } from '@/components/SeoHead';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/hooks/use-language';
+import { localizedPath } from '@/lib/languages';
 
 const ProviderDetail = () => {
   const { providerId } = useParams<{ providerId: string }>();
   const provider = cloudProviders.find(p => p.id === providerId);
+  const { language } = useLanguage();
 
   if (!provider) {
     return <Navigate to="/" replace />;
   }
+
 
   const requirementItems = [
     { key: 'email', label: 'Email', value: provider.requirements.email },
@@ -68,26 +74,35 @@ const ProviderDetail = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
+      <SeoHead
+        route={`/provider/${provider.id}`}
+        titleSuffix={provider.name}
+        description={`${provider.name} free tier, requirements, strengths and limitations — analysed by RunRateHost.`}
+      />
       <AnimatedBackground />
       
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-50 glass-card border-b border-border/30">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <Link to={localizedPath('/', language.code)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span className="hidden sm:inline">Back to All Providers</span>
           </Link>
-          <Button
-            asChild
-            className={`${provider.gradientClass} text-white border-0 gap-2`}
-          >
-            <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
-              Sign Up for {provider.shortName}
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Button
+              asChild
+              className={`${provider.gradientClass} text-white border-0 gap-2`}
+            >
+              <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
+                Sign Up for {provider.shortName}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </Button>
+          </div>
         </div>
       </nav>
+
 
       <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
         {/* Hero Section */}
@@ -421,7 +436,7 @@ const ProviderDetail = () => {
               variant="outline"
               size="lg"
             >
-              <Link to="/#providers">
+              <Link to={`${localizedPath("/", language.code)}#providers`}>
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Compare All Providers
               </Link>
