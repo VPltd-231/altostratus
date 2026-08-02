@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Logo3D } from './Logo3D';
+import { LanguageSwitcher } from './LanguageSwitcher';
+
 
 const navLinks = [
   { href: '#providers', label: 'Providers' },
@@ -66,17 +68,21 @@ export const Navigation: FC = () => {
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher />
           </div>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </Button>
+          {/* Mobile actions */}
+          <div className="flex items-center gap-1 md:hidden">
+            <LanguageSwitcher />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </Button>
+          </div>
+
         </div>
       </motion.nav>
 

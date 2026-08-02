@@ -12,7 +12,9 @@ import { CloudArchitecture } from '@/components/CloudArchitecture';
 import { PricingCalculator } from '@/components/PricingCalculator';
 import { CreditsHardSell } from '@/components/CreditsHardSell';
 import { CustomerBenefits } from '@/components/CustomerBenefits';
+import { SeoHead } from '@/components/SeoHead';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
+
 
 const Index = () => {
   const [selectedProvider, setSelectedProvider] = useState<CloudProvider | null>(null);
@@ -33,9 +35,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
+      <SeoHead route="/" />
       <AnimatedBackground />
       <Navigation />
       <Hero />
+
 
       {/* Smart Choices - moved below the fold */}
       <SmartChoices />
