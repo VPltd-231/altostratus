@@ -41,7 +41,7 @@ export const CreditsHardSell: FC = () => {
     { 
       icon: Rocket, 
       title: 'Market Mover Advantage', 
-      desc: '\n',
+      desc: 'Shorten speed to market & reduce launch costs',
       gradient: 'from-amber-500 via-orange-500 to-rose-500',
       glow: 'group-hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]',
       bgAccent: 'bg-amber-500/10'
