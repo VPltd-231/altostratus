@@ -25,23 +25,23 @@ export const CreditsHardSell: FC = () => {
     { 
       icon: TrendingUp, 
       title: 'Funding Options', 
-      desc: 'Learn how to take advantage of promotions',
+      desc: 'Receive approval for up to 6 figures in free balance\u00a0',
       gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',
       glow: 'group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]',
       bgAccent: 'bg-violet-500/10'
     },
     { 
       icon: Zap, 
-      title: 'Quick Wins', 
-      desc: 'Proven strategies that deliver results fast',
+      title: 'Optimized for Efficiency', 
+      desc: 'Scalable, growth-optimized infrastructure & networking quick deployment',
       gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
       glow: 'group-hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]',
       bgAccent: 'bg-emerald-500/10'
     },
     { 
       icon: Rocket, 
-      title: 'Stack Credits', 
-      desc: 'Combine multiple programs legally',
+      title: 'Market Mover Advantage', 
+      desc: '\n',
       gradient: 'from-amber-500 via-orange-500 to-rose-500',
       glow: 'group-hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]',
       bgAccent: 'bg-amber-500/10'
