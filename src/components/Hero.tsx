@@ -96,7 +96,7 @@ export const Hero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
             <span className="gradient-text">Save On Your</span>
             <br />
-            <span className="text-foreground">
+            <span className="inline-block pl-1 bg-gradient-to-r from-sky-300 via-blue-200 to-indigo-100 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(59,130,246,0.25)] border-l border-r border-b border-primary/20 rounded-b-md px-2 pb-1">
               Cloud Hosting<br />Infrastructure
             </span>
           </h1>
