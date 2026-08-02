@@ -213,3 +213,18 @@
 .group-hover\:rotate-y-180:hover {
   transform: rotateY(180deg);
 }
+
+/* Google Website Translator: hide the injected toolbar and keep layout stable */
+.goog-te-banner-frame,
+.skiptranslate iframe,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
