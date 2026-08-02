@@ -12,14 +12,20 @@ import { UseCaseValidator } from '@/components/UseCaseValidator';
 import { SignupWalkthrough } from '@/components/SignupWalkthrough';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { SeoHead } from '@/components/SeoHead';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/hooks/use-language';
+import { localizedPath } from '@/lib/languages';
 
 const ProviderDetail = () => {
   const { providerId } = useParams<{ providerId: string }>();
   const provider = cloudProviders.find(p => p.id === providerId);
+  const { language } = useLanguage();
 
   if (!provider) {
     return <Navigate to="/" replace />;
   }
+
 
   const requirementItems = [
     { key: 'email', label: 'Email', value: provider.requirements.email },
