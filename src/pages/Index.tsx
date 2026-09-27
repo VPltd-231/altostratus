@@ -101,7 +101,7 @@ const Index = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Major Cloud</span> Providers
+              <span className="gradient-text">Leading Cloud</span> Platforms
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Click on any provider to explore their free tier, requirements, strengths, and limitations in detail.
@@ -176,11 +176,11 @@ const SmartChoices = () => (
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pro Tips</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">OVERVIEW</span>
         </motion.div>
 
         <h2 className="text-3xl sm:text-5xl font-bold mb-4">
-          <span className="gradient-text">Feature</span> Cards
+          <span className="gradient-text">quick</span> Peak
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
           Hover to reveal detailed insights for each use case
