@@ -152,7 +152,14 @@ export const languagePaths = languages.filter((l) => l.path).map((l) => l.path);
 export const getLanguage = (code?: string): LanguageMeta =>
   languages.find((l) => l.code === code) ?? languages[0];
 
-export const SITE_URL = 'https://comparecloud.lovable.app';
+/**
+ * Public origin used for canonical/hreflang tags. Override at build time with
+ * VITE_SITE_URL (e.g. https://runratehost.com). `import.meta.env` is undefined
+ * when this module runs under plain Node (sitemap script), hence the `?.`.
+ */
+export const SITE_URL = (
+  (import.meta.env?.VITE_SITE_URL as string | undefined) || 'https://comparecloud.lovable.app'
+).replace(/\/$/, '');
 
 /** Build a URL for a route in a given language. `route` starts with "/" */
 export const localizedPath = (route: string, code: string) => {

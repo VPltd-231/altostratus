@@ -1,12 +1,16 @@
-// Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml.
+// Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml and public/robots.txt.
+// Set VITE_SITE_URL in the environment to generate URLs for your own domain.
 
 import { writeFileSync } from "fs"
 import { resolve } from "path"
+import { languages, SITE_URL } from "../src/lib/languages"
+import { cloudProviders } from "../src/data/cloudProviders"
 
-const BASE_URL = "https://comparecloud.lovable.app"
+const BASE_URL = (process.env.VITE_SITE_URL || SITE_URL).replace(/\/$/, "")
 
-const LANGS = ["", "de", "fr", "es", "it", "nl", "pl", "pt", "sv", "da", "fi", "cs", "ro"]
-const PROVIDERS = ["aws", "gcp", "azure", "oracle", "ibm"]
+// "" is the default (English) language, which has no URL prefix.
+const LANGS = languages.map((l) => l.path)
+const PROVIDERS = cloudProviders.map((p) => p.id)
 
 interface SitemapEntry {
   path: string
@@ -30,10 +34,12 @@ function alternates(path: string) {
   const rest = LANGS.includes(segments[0]) && segments[0] ? segments.slice(1) : segments
   const route = rest.length ? `/${rest.join("/")}` : ""
 
-  return LANGS.map((lang) => {
-    const href = `${BASE_URL}${lang ? `/${lang}` : ""}${route}` || `${BASE_URL}/`
-    return `    <xhtml:link rel="alternate" hreflang="${lang || "en"}" href="${href}" />`
-  }).join("\n")
+  const links = languages.map((l) => {
+    const href = `${BASE_URL}${l.path ? `/${l.path}` : ""}${route}` || `${BASE_URL}/`
+    return `    <xhtml:link rel="alternate" hreflang="${l.code}" href="${href}" />`
+  })
+  links.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${route || "/"}" />`)
+  return links.join("\n")
 }
 
 function generateSitemap(entries: SitemapEntry[]) {
@@ -60,3 +66,6 @@ function generateSitemap(entries: SitemapEntry[]) {
 
 writeFileSync(resolve("public/sitemap.xml"), generateSitemap(entries))
 console.log(`sitemap.xml written (${entries.length} entries)`)
+
+writeFileSync(resolve("public/robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${BASE_URL}/sitemap.xml\n`)
+console.log("robots.txt written")

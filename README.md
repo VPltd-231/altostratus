@@ -1,26 +1,38 @@
-# CloudCompare
+# RunRateHost
 
-Create a responsive service comparison website for cloud hosting services, where we're going to individually detail, analyze and compare the services, benefits and doubts for each of the platforms. The design needs to be technology related with a special emphasis on cloud hosting providers, use the official branding colors and palette for each company. Divide the sections based on content and build interactive elements for displaying the contents, utilize collapsible items, themed listicles, hover & scroll effects and embed icons where possible. If the development is not processed in one go, split the workload into several different prompts where the aim is to flesh out the final project.
+Static React front-end that compares AWS, Google Cloud, Azure, Oracle and IBM Cloud free tiers and estimates monthly hosting cost, so startups can plan their runway.
 
-This project was built with [Lovable](https://lovable.dev).
+Stack: Vite · React 18 · TypeScript · Tailwind + shadcn/ui · framer-motion (LazyMotion) · react-router · react-helmet-async.
 
-**Live app**: https://cloudhostingchoices.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a8047a49-19d6-4018-a401-d924dd537da6).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Develop
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev        # http://localhost:8080
+npm run lint
+npm test
+npm run build      # outputs ./dist (static files)
+npm run preview
 ```
+
+`predev` / `prebuild` regenerate `public/sitemap.xml` and `public/robots.txt`.
+
+## Configuration (build-time environment variables)
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_SITE_URL` | Public origin for canonical/hreflang tags, sitemap and robots (e.g. `https://runratehost.com`). |
+| `VITE_GUIDE_SIGNUP_URL` | Endpoint the credits-guide email form POSTs `{ email, source }` to. If unset the form is disabled. |
+
+Example: `VITE_SITE_URL=https://runratehost.com npm run build`
+
+## Performance notes
+
+- One static page background (`.app-bg`); no `backdrop-filter` on cards (only the fixed nav blurs).
+- Below-the-fold sections are separate chunks, mounted shortly before they scroll into view (`LazyMount`).
+- `LazyMotion` + `m.*` components; `prefers-reduced-motion` is honoured globally.
+- Inter is self-hosted (`@fontsource-variable/inter`); Google Translate loads only on translated URLs (`/de`, `/fr`, ...), after idle.
+
+## Deploy
+
+See [DEPLOY.md](./DEPLOY.md) for the Ubuntu / Nginx / AWS steps.

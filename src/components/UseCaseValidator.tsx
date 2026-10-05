@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Check, X, AlertCircle, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import { CloudProvider } from '@/data/cloudProviders';
 import { Button } from './ui/button';
@@ -162,7 +162,7 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
 
       <AnimatePresence>
         {isExpanded && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -174,7 +174,7 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                 <p className="text-sm text-muted-foreground mb-4">Select your planned use cases:</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                   {useCases.map((useCase) => (
-                    <motion.button
+                    <m.button
                       key={useCase.id}
                       onClick={() => toggleUseCase(useCase.id)}
                       whileHover={{ scale: 1.02 }}
@@ -189,14 +189,14 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                       <p className={`text-[10px] mt-1 ${selectedUseCases.includes(useCase.id) ? 'text-white/80' : 'text-muted-foreground'}`}>
                         {useCase.description}
                       </p>
-                    </motion.button>
+                    </m.button>
                   ))}
                 </div>
               </div>
 
               {/* Validate Button */}
               {selectedUseCases.length > 0 && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -207,13 +207,13 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                     <Sparkles className="w-4 h-4 mr-2" />
                     Validate {selectedUseCases.length} Use Case{selectedUseCases.length > 1 ? 's' : ''}
                   </Button>
-                </motion.div>
+                </m.div>
               )}
 
               {/* Results */}
               <AnimatePresence>
                 {showResults && selectedUseCases.length > 0 && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -221,7 +221,7 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                   >
                     {/* Overall Score */}
                     {overallScore() && (
-                      <motion.div 
+                      <m.div 
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         className={`p-4 rounded-xl ${overallScore()!.bg} border border-current/20 text-center`}
@@ -232,7 +232,7 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                         <p className="text-sm text-muted-foreground mt-1">
                           for {provider.name}
                         </p>
-                      </motion.div>
+                      </m.div>
                     )}
 
                     {/* Individual Results */}
@@ -241,7 +241,7 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                         const useCase = useCases.find(uc => uc.id === id)!;
                         const result = getProviderScore(provider, useCase);
                         return (
-                          <motion.div
+                          <m.div
                             key={id}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -258,15 +258,15 @@ export const UseCaseValidator: FC<UseCaseValidatorProps> = ({ provider }) => {
                                 {result.score}
                               </span>
                             </div>
-                          </motion.div>
+                          </m.div>
                         );
                       })}
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

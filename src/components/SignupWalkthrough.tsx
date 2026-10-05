@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   ChevronRight, ChevronLeft, Check, ExternalLink, 
   Mail, CreditCard, Phone, Shield, User, AlertTriangle,
@@ -164,7 +164,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
 
       <AnimatePresence>
         {isExpanded && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -175,7 +175,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
               <div className="flex items-center justify-between mb-8 relative">
                 {/* Progress Line */}
                 <div className="absolute top-5 left-0 right-0 h-0.5 bg-border" />
-                <motion.div 
+                <m.div 
                   className={`absolute top-5 left-0 h-0.5 ${provider.gradientClass}`}
                   initial={{ width: '0%' }}
                   animate={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
@@ -193,7 +193,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
                       onClick={() => handleStepClick(index)}
                       className="relative z-10 flex flex-col items-center group"
                     >
-                      <motion.div
+                      <m.div
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
@@ -209,7 +209,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
                         ) : (
                           <StepIcon className="w-4 h-4" />
                         )}
-                      </motion.div>
+                      </m.div>
                       <span className={`text-[10px] mt-2 font-medium transition-colors ${
                         isCurrent ? provider.colorClass : 'text-muted-foreground'
                       }`}>
@@ -222,7 +222,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
 
               {/* Current Step Content */}
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={currentStep}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -247,14 +247,14 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
 
                   {/* Warning */}
                   {steps[currentStep].warning && (
-                    <motion.div
+                    <m.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-start gap-3 p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/30"
                     >
                       <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                      <p className="text-sm text-yellow-200">{steps[currentStep].warning}</p>
-                    </motion.div>
+                      <p className="text-sm text-yellow-800">{steps[currentStep].warning}</p>
+                    </m.div>
                   )}
 
                   {/* Tips */}
@@ -262,7 +262,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pro Tips</p>
                     <div className="grid gap-2">
                       {steps[currentStep].tips.map((tip, index) => (
-                        <motion.div
+                        <m.div
                           key={index}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -271,11 +271,11 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
                         >
                           <Check className={`w-4 h-4 ${provider.colorClass} shrink-0`} />
                           <span className="text-sm">{tip}</span>
-                        </motion.div>
+                        </m.div>
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Navigation */}
@@ -311,7 +311,7 @@ export const SignupWalkthrough: FC<SignupWalkthroughProps> = ({ provider }) => {
                 )}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

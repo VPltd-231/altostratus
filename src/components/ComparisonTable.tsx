@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Check, X, Minus } from 'lucide-react';
 import { cloudProviders } from '@/data/cloudProviders';
 import { CloudIcon } from './CloudIcon';
@@ -72,9 +72,9 @@ export const ComparisonTable: FC = () => {
   const providerIds = ['aws', 'gcp', 'azure', 'oracle', 'ibm'] as const;
 
   return (
-    <section className="py-20 px-4" id="comparison">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -86,7 +86,7 @@ export const ComparisonTable: FC = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Compare free tier offerings across all major cloud providers at a glance.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Category tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -106,7 +106,7 @@ export const ComparisonTable: FC = () => {
         </div>
 
         {/* Table */}
-        <motion.div
+        <m.div
           key={activeCategory}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export const ComparisonTable: FC = () => {
               </tbody>
             </table>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Legend */}
         <div className="flex justify-center gap-6 mt-6 text-sm text-muted-foreground">

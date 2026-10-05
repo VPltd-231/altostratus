@@ -1,23 +1,42 @@
 import { FC, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, Users, X } from 'lucide-react';
+import { m, AnimatePresence } from 'framer-motion';
+import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, X, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+
+/**
+ * Where the email form posts to (a serverless function, Formspree, etc.).
+ * Set VITE_GUIDE_SIGNUP_URL at build time. Without it the form is disabled
+ * rather than pretending to send anything.
+ */
+const SIGNUP_URL = import.meta.env.VITE_GUIDE_SIGNUP_URL as string | undefined;
+
+type SubmitStatus = 'idle' | 'sending' | 'done' | 'error';
 
 export const CreditsHardSell: FC = () => {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<SubmitStatus>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      setTimeout(() => {
+    if (!email || !SIGNUP_URL || status === 'sending') return;
+    setStatus('sending');
+    try {
+      const res = await fetch(SIGNUP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email, source: 'credits-guide' }),
+      });
+      if (!res.ok) throw new Error(`Signup failed: ${res.status}`);
+      setStatus('done');
+      window.setTimeout(() => {
         setShowEmailForm(false);
-        setIsSubmitted(false);
+        setStatus('idle');
         setEmail('');
-      }, 3000);
+      }, 4000);
+    } catch {
+      setStatus('error');
     }
   };
 
@@ -49,52 +68,24 @@ export const CreditsHardSell: FC = () => {
   ];
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden">
-      {/* Animated background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-oracle/5" />
-        
-        <motion.div 
-          className="absolute top-20 left-[10%] w-72 h-72 bg-primary/20 rounded-full blur-[100px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-[10%] w-96 h-96 bg-oracle/15 rounded-full blur-[120px]"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gcp/10 rounded-full blur-[150px]"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
+    <section className="py-24 px-4 relative">
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-oracle/5" />
 
       <div className="max-w-5xl mx-auto relative z-10">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
           {/* Floating badge */}
-          <motion.div 
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-primary/30 mb-8"
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border border-primary/30 mb-8">
+            <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold bg-gradient-to-r from-primary to-gcp bg-clip-text text-transparent">
               EXCLUSIVE INSIDER GUIDE
             </span>
-            <Sparkles className="w-4 h-4 text-gcp animate-pulse" />
-          </motion.div>
+            <Sparkles className="w-4 h-4 text-gcp" />
+          </div>
 
           {/* Main headline */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
@@ -103,11 +94,6 @@ export const CreditsHardSell: FC = () => {
               <span className="bg-gradient-to-r from-primary via-gcp to-azure bg-clip-text text-transparent">
                 $100,000+
               </span>
-              <motion.div 
-                className="absolute -inset-2 bg-gradient-to-r from-primary/20 via-gcp/20 to-azure/20 blur-xl -z-10"
-                animate={{ opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
             </span>
             <br />
             <span className="text-foreground">in Cloud Credits</span>
@@ -123,18 +109,13 @@ export const CreditsHardSell: FC = () => {
           {/* Redesigned Upsell Feature Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
             {upsellFeatures.map((feature, i) => (
-              <motion.div
+              <m.div
                 key={i}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  delay: i * 0.2,
-                  duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                whileHover={{ scale: 1.03, y: -6 }}
-                className={`group relative rounded-2xl overflow-hidden transition-all duration-500 ${feature.glow}`}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+                transition={{ delay: Math.min(i * 0.08, 0.24), duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className={`group relative rounded-2xl overflow-hidden transition-shadow duration-300 hover:-translate-y-1 ${feature.glow}`}
               >
                 {/* Soft background accent */}
                 <div className={`absolute inset-0 ${feature.bgAccent} opacity-50 group-hover:opacity-80 transition-opacity duration-300`} />
@@ -143,7 +124,7 @@ export const CreditsHardSell: FC = () => {
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`} />
                 
                 {/* Inner content */}
-                <div className="relative glass-card rounded-2xl p-6 h-full border border-border/40 bg-card/80 backdrop-blur-xl">
+                <div className="relative glass-card rounded-2xl p-6 h-full border border-border/40">
                   {/* Icon with soft gradient background */}
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 mx-auto shadow-lg group-hover:scale-110 group-hover:rotate-2 transition-all duration-300`}>
                     <feature.icon className="w-6 h-6 text-white" />
@@ -152,20 +133,16 @@ export const CreditsHardSell: FC = () => {
                   <h3 className="font-semibold text-base mb-2 text-foreground">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Restyled CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ 
-              delay: 0.4,
-              duration: 0.7,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
+          <m.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="relative rounded-3xl p-[2px] bg-gradient-to-r from-primary via-gcp to-azure"
           >
             <div className="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden bg-card/98">
@@ -173,31 +150,23 @@ export const CreditsHardSell: FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-oracle/5" />
               
               <div className="relative z-10">
-                {/* Animated Stars */}
-                <div className="flex justify-center gap-1 mb-4">
+                <div className="flex justify-center gap-1 mb-4" aria-hidden>
                   {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                      whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
-                    >
-                      <Star className="w-6 h-6 text-yellow-500 fill-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" />
-                    </motion.div>
+                    <Star key={i} className="w-6 h-6 text-yellow-500 fill-yellow-500" />
                   ))}
                 </div>
 
-                <p className="text-xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
-                  Join 10,000+ developers & founders
+                <p className="text-xl font-bold mb-2">
+                  The startup playbook for free cloud credits
                 </p>
                 <p className="text-muted-foreground mb-8">
-                  who've already saved millions on cloud infrastructure
+                  Programs, eligibility and application tips for AWS, Google Cloud, Azure and more
                 </p>
 
                 {/* Email Form or CTA */}
                 <AnimatePresence mode="wait">
                   {!showEmailForm ? (
-                    <motion.div
+                    <m.div
                       key="cta"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -206,36 +175,19 @@ export const CreditsHardSell: FC = () => {
                     >
                       <Button
                         onClick={() => setShowEmailForm(true)}
+                        disabled={!SIGNUP_URL}
                         size="lg"
-                        className="group relative overflow-hidden bg-gradient-to-r from-primary via-gcp to-azure text-white font-bold px-10 py-7 text-lg rounded-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.4)] transition-all duration-300"
+                        className="group bg-gradient-to-r from-primary via-gcp to-azure text-white font-bold px-10 py-7 text-lg rounded-2xl transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)]"
                       >
-                        <motion.span 
-                          className="absolute inset-0 bg-white/20"
-                          initial={{ x: '-100%', opacity: 0 }}
-                          whileHover={{ x: '100%', opacity: 1 }}
-                          transition={{ duration: 0.5 }}
-                        />
-                        <span className="relative flex items-center gap-3">
+                        <span className="flex items-center gap-3">
                           <Zap className="w-6 h-6" />
-                          Get the Complete Guide
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                          {SIGNUP_URL ? 'Get the Complete Guide' : 'Guide coming soon'}
+                          {SIGNUP_URL && <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />}
                         </span>
                       </Button>
-                      
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl line-through text-muted-foreground/50">$59</span>
-                        <Button
-                          variant="outline"
-                          size="lg"
-                          className="font-semibold px-6 py-6 text-base rounded-xl border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
-                        >
-                          <Sparkles className="w-4 h-4 mr-2" />
-                          Sneak Peek
-                        </Button>
-                      </div>
-                    </motion.div>
+                    </m.div>
                   ) : (
-                    <motion.form
+                    <m.form
                       key="form"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -243,7 +195,7 @@ export const CreditsHardSell: FC = () => {
                       onSubmit={handleSubmit}
                       className="max-w-md mx-auto"
                     >
-                      {!isSubmitted ? (
+                      {status !== 'done' ? (
                         <div className="space-y-4">
                           <div className="relative">
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -252,17 +204,30 @@ export const CreditsHardSell: FC = () => {
                               placeholder="Enter your email address"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
+                              aria-label="Email address"
+                              autoComplete="email"
                               className="pl-12 py-6 text-lg rounded-xl bg-secondary/50 border-border/50 focus:border-primary"
                               required
                             />
                           </div>
+                          {status === 'error' && (
+                            <p role="alert" className="flex items-center justify-center gap-2 text-sm text-destructive">
+                              <AlertCircle className="w-4 h-4" />
+                              Something went wrong. Please try again.
+                            </p>
+                          )}
                           <div className="flex gap-3">
                             <Button
                               type="submit"
+                              disabled={status === 'sending'}
                               className="flex-1 bg-gradient-to-r from-primary to-gcp text-white font-bold py-6 rounded-xl"
                             >
-                              <CheckCircle className="w-5 h-5 mr-2" />
-                              Send Me the Guide
+                              {status === 'sending' ? (
+                                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              ) : (
+                                <CheckCircle className="w-5 h-5 mr-2" />
+                              )}
+                              {status === 'sending' ? 'Sending…' : 'Send Me the Guide'}
                             </Button>
                             <Button
                               type="button"
@@ -275,21 +240,12 @@ export const CreditsHardSell: FC = () => {
                           </div>
                         </div>
                       ) : (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="flex flex-col items-center gap-3 py-4"
-                        >
-                          <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 0.5 }}
-                          >
-                            <CheckCircle className="w-16 h-16 text-green-500" />
-                          </motion.div>
-                          <p className="text-xl font-bold">Check your inbox! 🎉</p>
-                        </motion.div>
+                        <div role="status" className="flex flex-col items-center gap-3 py-4">
+                          <CheckCircle className="w-16 h-16 text-green-500" />
+                          <p className="text-xl font-bold">Thanks! We've got your email.</p>
+                        </div>
                       )}
-                    </motion.form>
+                    </m.form>
                   )}
                 </AnimatePresence>
 
@@ -297,27 +253,19 @@ export const CreditsHardSell: FC = () => {
                 <div className="flex flex-wrap justify-center gap-8 mt-10 pt-8 border-t border-border/30">
                   {[
                     { icon: Shield, text: 'No credit card required' },
-                    { icon: Zap, text: 'Instant access' },
                     { icon: Clock, text: 'Updated for 2026' },
-                    { icon: Users, text: '10K+ downloads' },
                   ].map((item, i) => (
-                    <motion.div 
-                      key={i} 
-                      className="flex items-center gap-2 text-sm text-muted-foreground"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 + i * 0.1 }}
-                    >
+                    <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <item.icon className="w-4 h-4 text-primary" />
                       {item.text}
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

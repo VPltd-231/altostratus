@@ -1,5 +1,3 @@
-/* Fonts are preconnected + loaded from index.html for faster paint */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -89,11 +87,10 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
   }
 
   code, pre {
-    font-family: 'JetBrains Mono', monospace;
+    @apply font-mono;
   }
 }
 
@@ -123,8 +120,39 @@
     background: var(--ibm-gradient);
   }
 
+  /* Opaque-ish card. No backdrop-filter: blurring whatever scrolls behind
+     dozens of cards forces the GPU to re-blur every frame. */
   .glass-card {
-    @apply bg-card/90 backdrop-blur-xl border border-border/60 shadow-lg shadow-primary/5;
+    @apply bg-card/95 border border-border/60 shadow-md shadow-primary/5;
+  }
+
+  /* The only element allowed to blur its backdrop: the single fixed nav bar. */
+  .glass-nav {
+    @apply bg-card/85 backdrop-blur-md border-b border-border/40 shadow-sm;
+  }
+
+  /* One static, GPU-free page backdrop (replaces ~40 animated elements). */
+  .app-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(600px circle at 5% 20%, hsl(var(--primary) / 0.10), transparent 70%),
+      radial-gradient(500px circle at 95% 55%, hsl(var(--gcp-blue) / 0.08), transparent 70%),
+      radial-gradient(400px circle at 40% 100%, hsl(var(--oracle-red) / 0.06), transparent 70%);
+  }
+
+  /* Skip layout/paint of sections that are far off screen. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
+  /* Dashed "data flow" line used by the architecture diagram. */
+  .flow-dash {
+    stroke-dasharray: 6 6;
+    animation: flowDash 1s linear infinite;
   }
 
   .glow-primary {
@@ -167,14 +195,6 @@
     background-size: 200% 200%;
     animation: gradientShift 8s ease infinite;
   }
-
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
 }
 
 @keyframes float {
@@ -193,7 +213,11 @@
   100% { background-position: 0% 50%; }
 }
 
-/* 3D Flip Card Utilities */
+@keyframes flowDash {
+  to { stroke-dashoffset: -12; }
+}
+
+/* 3D flip card utilities */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -204,14 +228,22 @@
 
 .backface-hidden {
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
 
-.group-hover\:rotate-y-180:hover {
-  transform: rotateY(180deg);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Google Website Translator: hide the injected toolbar and keep layout stable */

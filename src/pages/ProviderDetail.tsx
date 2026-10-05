@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   ArrowLeft, ExternalLink, Clock, CreditCard, Server, Database, 
   HardDrive, Wifi, Check, X, Quote, Zap, Shield, AlertTriangle,
@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 import { cloudProviders, CloudProvider } from '@/data/cloudProviders';
 import { CloudIcon } from '@/components/CloudIcon';
-import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { UseCaseValidator } from '@/components/UseCaseValidator';
 import { SignupWalkthrough } from '@/components/SignupWalkthrough';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ const ProviderDetail = () => {
   const { language } = useLanguage();
 
   if (!provider) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={localizedPath('/', language.code)} replace />;
   }
 
 
@@ -73,16 +72,16 @@ const ProviderDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen relative">
       <SeoHead
         route={`/provider/${provider.id}`}
         titleSuffix={provider.name}
         description={`${provider.name} free tier, requirements, strengths and limitations — analysed by RunRateHost.`}
       />
-      <AnimatedBackground />
+      <div aria-hidden className="app-bg" />
       
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 glass-card border-b border-border/30">
+      <nav className="sticky top-0 z-50 glass-nav">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
           <Link to={localizedPath('/', language.code)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-5 h-5" />
@@ -106,7 +105,7 @@ const ProviderDetail = () => {
 
       <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
         {/* Hero Section */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative"
@@ -116,14 +115,14 @@ const ProviderDetail = () => {
           <div className="relative glass-card rounded-3xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-start gap-6">
               {/* Provider Icon */}
-              <motion.div 
+              <m.div 
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
                 className={`p-6 rounded-3xl ${provider.gradientClass} shadow-2xl`}
               >
-                <CloudIcon provider={provider.id as any} size={64} className="text-white" />
-              </motion.div>
+                <CloudIcon provider={provider.id} size={64} className="text-white" />
+              </m.div>
 
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-3 mb-2">
@@ -163,39 +162,39 @@ const ProviderDetail = () => {
             </div>
 
             {/* Description */}
-            <motion.p 
+            <m.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               className="mt-8 text-base leading-relaxed text-muted-foreground"
             >
               {provider.description}
-            </motion.p>
+            </m.p>
           </div>
-        </motion.section>
+        </m.section>
 
         {/* Use Case Validator */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <UseCaseValidator provider={provider} />
-        </motion.section>
+        </m.section>
 
         {/* Signup Walkthrough */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
           <SignupWalkthrough provider={provider} />
-        </motion.section>
+        </m.section>
 
         {/* Requirements & Free Tier Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Account Requirements */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
@@ -227,10 +226,10 @@ const ProviderDetail = () => {
                 <p className="text-xs text-yellow-700">{provider.requirements.notes}</p>
               </div>
             )}
-          </motion.section>
+          </m.section>
 
           {/* Best For / Not Ideal For */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
@@ -270,11 +269,11 @@ const ProviderDetail = () => {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </m.section>
         </div>
 
         {/* Free Tier Details */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -337,11 +336,11 @@ const ProviderDetail = () => {
               );
             })}
           </Accordion>
-        </motion.section>
+        </m.section>
 
         {/* Strengths & Limitations */}
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.section
+          <m.section
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
@@ -350,7 +349,7 @@ const ProviderDetail = () => {
             <h2 className="text-xl font-bold mb-4 text-green-500">Strengths</h2>
             <ul className="space-y-3">
               {provider.strengths.map((strength, i) => (
-                <motion.li
+                <m.li
                   key={i}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -359,12 +358,12 @@ const ProviderDetail = () => {
                 >
                   <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-sm">{strength}</span>
-                </motion.li>
+                </m.li>
               ))}
             </ul>
-          </motion.section>
+          </m.section>
 
-          <motion.section
+          <m.section
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
@@ -373,7 +372,7 @@ const ProviderDetail = () => {
             <h2 className="text-xl font-bold mb-4 text-red-500">Limitations</h2>
             <ul className="space-y-3">
               {provider.limitations.map((limitation, i) => (
-                <motion.li
+                <m.li
                   key={i}
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -382,14 +381,14 @@ const ProviderDetail = () => {
                 >
                   <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                   <span className="text-sm">{limitation}</span>
-                </motion.li>
+                </m.li>
               ))}
             </ul>
-          </motion.section>
+          </m.section>
         </div>
 
         {/* Engineer's Take */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
@@ -405,10 +404,10 @@ const ProviderDetail = () => {
               "{provider.engineerTake}"
             </p>
           </div>
-        </motion.section>
+        </m.section>
 
         {/* CTA Section */}
-        <motion.section
+        <m.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
@@ -442,7 +441,7 @@ const ProviderDetail = () => {
               </Link>
             </Button>
           </div>
-        </motion.section>
+        </m.section>
       </main>
     </div>
   );

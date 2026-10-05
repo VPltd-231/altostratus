@@ -1,39 +1,33 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Fragment } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Index from "./pages/Index";
-import ProviderDetail from "./pages/ProviderDetail";
-import NotFound from "./pages/NotFound";
 import { GoogleTranslate } from "./components/GoogleTranslate";
+import { MotionProvider } from "./components/motion/MotionProvider";
 import { languagePaths } from "./lib/languages";
 
-const queryClient = new QueryClient();
+// Secondary routes are split out of the entry bundle.
+const ProviderDetail = lazy(() => import("./pages/ProviderDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+/** Renders children for "/" or "/<supported-language>/..."; anything else is a 404. */
+const LangGate = ({ children }: { children: ReactNode }) => {
+  const { lang } = useParams();
+  return !lang || languagePaths.includes(lang) ? <>{children}</> : <NotFound />;
+};
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <GoogleTranslate />
+  <MotionProvider>
+    <BrowserRouter>
+      <GoogleTranslate />
+      <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/provider/:providerId" element={<ProviderDetail />} />
-          {languagePaths.map((lang) => (
-            <Fragment key={lang}>
-              <Route path={`/${lang}`} element={<Index />} />
-              <Route path={`/${lang}/provider/:providerId`} element={<ProviderDetail />} />
-            </Fragment>
-          ))}
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/:lang?" element={<LangGate><Index /></LangGate>} />
+          <Route path="/:lang?/provider/:providerId" element={<LangGate><ProviderDetail /></LangGate>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </MotionProvider>
 );
 
 export default App;

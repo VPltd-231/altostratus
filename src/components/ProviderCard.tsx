@@ -1,14 +1,16 @@
 import { FC } from 'react';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { m } from 'framer-motion';
 import { ChevronRight, Clock, CreditCard, Quote, Server, Database, HardDrive, Wifi, ExternalLink } from 'lucide-react';
 import { CloudProvider } from '@/data/cloudProviders';
 import { CloudIcon } from './CloudIcon';
 import { Button } from './ui/button';
+import { useLanguage } from '@/hooks/use-language';
+import { localizedPath } from '@/lib/languages';
 
 interface ProviderCardProps {
   provider: CloudProvider;
   index: number;
-  onSelect: (id: string) => void;
 }
 
 const specItems = [
@@ -18,12 +20,25 @@ const specItems = [
   { key: 'networking', icon: Wifi, label: 'Network' },
 ];
 
-export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect }) => {
+type TierValue = Record<string, unknown> | undefined;
+
+/** Picks the most informative one-line summary of a free-tier entry. */
+const summarise = (tier: TierValue): string => {
+  if (!tier) return 'N/A';
+  for (const key of ['specs', 'object', 'egress']) {
+    const value = tier[key];
+    if (typeof value === 'string') return value;
+  }
+  return 'Available';
+};
+
+export const ProviderCard: FC<ProviderCardProps> = ({ provider, index }) => {
+  const { language } = useLanguage();
   // Cap the cascade so later cards don't feel sluggish
   const enterDelay = Math.min(index, 5) * 0.06;
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
@@ -31,12 +46,12 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
       className="group h-full"
     >
       <div
-        className="relative h-full rounded-3xl transition-[transform,box-shadow] duration-300 ease-out will-change-transform group-hover:-translate-y-1.5 group-hover:shadow-2xl"
+        className="relative h-full rounded-3xl transition-[transform,box-shadow] duration-300 ease-out group-hover:-translate-y-1.5 group-hover:shadow-2xl"
       >
-        {/* Color-coded glow - CSS driven, no JS animation */}
+        {/* Color-coded glow: only exists while hovered, so idle cards carry no blur layer */}
         <div
           aria-hidden
-          className={`absolute -inset-[2px] rounded-3xl opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500 ${provider.gradientClass}`}
+          className={`absolute -inset-[2px] hidden rounded-3xl opacity-0 blur-xl transition-opacity duration-500 md:group-hover:block md:group-hover:opacity-60 ${provider.gradientClass}`}
         />
 
         {/* Main card */}
@@ -58,7 +73,7 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
             <div
               className={`p-4 rounded-2xl ${provider.gradientClass} shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:rotate-[-3deg]`}
             >
-              <CloudIcon provider={provider.id as any} size={36} className="text-white" />
+              <CloudIcon provider={provider.id} size={36} className="text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-2">
@@ -106,17 +121,9 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
           {/* Specs grid - CSS transitions only */}
           <div className="grid grid-cols-2 gap-2 mb-6">
             {specItems.map((spec) => {
-              const freeTierKey = spec.key as keyof typeof provider.freeTier;
-              const tierData = provider.freeTier[freeTierKey];
-              const displayValue = tierData
-                ? typeof tierData === 'object' && 'specs' in tierData
-                  ? tierData.specs
-                  : typeof tierData === 'object' && 'object' in tierData
-                  ? tierData.object
-                  : typeof tierData === 'object' && 'egress' in tierData
-                  ? tierData.egress
-                  : 'Available'
-                : 'N/A';
+              const displayValue = summarise(
+                provider.freeTier[spec.key as keyof typeof provider.freeTier] as TierValue,
+              );
 
               return (
                 <div
@@ -138,11 +145,13 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
           {/* Actions */}
           <div className="relative z-10 flex gap-2">
             <Button
-              onClick={() => onSelect(provider.id)}
+              asChild
               className={`flex-1 group/btn ${provider.gradientClass} border-0 text-white hover:opacity-90 shadow-md cursor-pointer`}
             >
-              <span>Explore</span>
-              <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+              <Link to={localizedPath(`/provider/${provider.id}`, language.code)}>
+                <span>Explore</span>
+                <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+              </Link>
             </Button>
             <Button
               asChild
@@ -157,6 +166,6 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index, onSelect 
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
