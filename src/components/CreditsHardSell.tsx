@@ -4,6 +4,8 @@ import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle,
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
+const CHECKOUT_URL = 'https://txprocessing.sell.app/product/product-1792183274';
+
 /**
  * Where the email form posts to (a serverless function, Formspree, etc.).
  * Set VITE_GUIDE_SIGNUP_URL at build time. Without it the form is disabled
@@ -160,7 +162,8 @@ export const CreditsHardSell: FC = () => {
                   The startup playbook for free cloud credits
                 </p>
                 <p className="text-muted-foreground mb-8">
-                  Programs, eligibility and application tips for AWS, Google Cloud, Azure and more
+                  In-depth guide written from experience applying. Learn about eligibility and application steps, tips
+              about how to maximize your chances for success & obtain $100'000 in free credits.
                 </p>
 
                 {/* Email Form or CTA */}
@@ -173,19 +176,29 @@ export const CreditsHardSell: FC = () => {
                       exit={{ opacity: 0, scale: 0.95 }}
                       className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                      <Button
-                        onClick={() => setShowEmailForm(true)}
-                        disabled={!SIGNUP_URL}
-                        size="lg"
-                        className="group bg-gradient-to-r from-primary via-gcp to-azure text-white font-bold px-10 py-7 text-lg rounded-2xl transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)]"
-                      >
-                        <span className="flex items-center gap-3">
-                          <Zap className="w-6 h-6" />
-                          {SIGNUP_URL ? 'Get the Complete Guide' : 'Guide coming soon'}
-                          {SIGNUP_URL && <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />}
-                        </span>
-                      </Button>
-                    </m.div>
+
+                   <Button
+  asChild
+  size="lg"
+  className="group relative overflow-hidden bg-gradient-to-r from-primary via-gcp to-azure text-white font-bold px-10 py-7 text-lg rounded-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.4)] transition-all duration-300"
+>
+  <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+    
+
+		<span
+  aria-hidden
+  className="absolute inset-0 -translate-x-full bg-white/20 opacity-0 transition-all duration-500 group-hover:translate-x-full group-hover:opacity-100"
+/>
+
+    <span className="relative flex items-center gap-3">
+      <Zap className="w-6 h-6" />
+      Buy the Complete Guide
+      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+    </span>
+  </a>
+</Button>
+ 
+                   </m.div>
                   ) : (
                     <m.form
                       key="form"
