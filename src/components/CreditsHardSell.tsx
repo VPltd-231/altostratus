@@ -192,7 +192,7 @@ export const CreditsHardSell: FC = () => {
 
     <span className="relative flex items-center gap-3">
       <Zap className="w-6 h-6" />
-      Buy the Complete Guide
+      Get Insider Access
       <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
     </span>
   </a>
