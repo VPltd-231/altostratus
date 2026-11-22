@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { CreditsButton } from './CreditsButton';
 
 // Order matches the order of the sections on the page.
 const navLinks = [
@@ -97,6 +98,7 @@ export const Navigation: FC = () => {
               </a>
             ))}
             <LanguageSwitcher />
+            <CreditsButton className="ml-2" />
           </div>
 
           <div className="flex items-center gap-1 md:hidden">
@@ -133,6 +135,7 @@ export const Navigation: FC = () => {
                 {link.label}
               </a>
             ))}
+            <CreditsButton className="mt-2 self-start" onClick={() => setIsMobileMenuOpen(false)} />
           </div>
         </div>
       )}
