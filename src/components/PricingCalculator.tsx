@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from 'react';
-import { Calculator, DollarSign, Server, HardDrive, Wifi, Database, Code, Zap, type LucideIcon } from 'lucide-react';
+import { Calculator, DollarSign, Crown, ArrowRight, Server, HardDrive, Wifi, Database, Code, Zap, type LucideIcon } from 'lucide-react';
 import { Slider } from './ui/slider';
 import { CloudIcon } from './CloudIcon';
 import { INITIAL_USAGE, USAGE_FIELDS, estimateAll, type Usage, type UsageId } from '@/data/pricing';
@@ -114,6 +114,21 @@ export const PricingCalculator: FC = () => {
                 );
               })}
             </ol>
+
+            <a
+              href="#credits"
+              className="group mt-6 block rounded-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent p-5 text-center transition-shadow hover:shadow-lg"
+            >
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Insider offer</p>
+              <p className="mt-1 text-2xl font-extrabold leading-tight sm:text-3xl">
+                Save up to <span className="gradient-text">100%</span> of your initial cloud hosting costs
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-transform group-hover:scale-105">
+                <Crown className="h-4 w-4" aria-hidden />
+                Join the Exclusive Insider's Club
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+              </span>
+            </a>
 
             <p className="mt-6 text-center text-xs text-muted-foreground">
               * Estimates are illustrative, based on simplified list prices. Actual costs vary by region, instance type
