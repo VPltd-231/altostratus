@@ -264,6 +264,11 @@
   font-weight: 600;
 }
 
+.btn-credits--lg .btn-credits__inner {
+  padding: 0.9rem 2rem;
+  font-size: 1.125rem;
+}
+
 .btn-credits:hover .btn-credits__inner,
 .btn-credits:focus-visible .btn-credits__inner {
   animation: credits-flash 0.7s ease-in-out infinite;
