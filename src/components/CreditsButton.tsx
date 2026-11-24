@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { DollarSign } from 'lucide-react';
-import { CHECKOUT_URL } from '@/lib/links';
 import { cn } from '@/lib/utils';
 
 interface CreditsButtonProps {
@@ -9,12 +8,10 @@ interface CreditsButtonProps {
   onClick?: () => void;
 }
 
-/** Header CTA: light button with a circling gradient border and flashing hover. Pure CSS animation. */
+/** CTA that scrolls to the credits section: light button with a circling gradient border and flashing hover. Pure CSS animation. */
 export const CreditsButton: FC<CreditsButtonProps> = ({ className, onClick, size = 'default' }) => (
   <a
-    href={CHECKOUT_URL}
-    target="_blank"
-    rel="noopener noreferrer"
+    href="#credits"
     onClick={onClick}
     className={cn('btn-credits', size === 'lg' && 'btn-credits--lg', className)}
   >

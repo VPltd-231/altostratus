@@ -2,6 +2,7 @@ import { FC, useMemo, useState } from 'react';
 import { Calculator, DollarSign, Crown, ArrowRight, Server, HardDrive, Wifi, Database, Code, Zap, type LucideIcon } from 'lucide-react';
 import { Slider } from './ui/slider';
 import { CloudIcon } from './CloudIcon';
+import { CHECKOUT_URL } from '@/lib/links';
 import { INITIAL_USAGE, USAGE_FIELDS, estimateAll, type Usage, type UsageId } from '@/data/pricing';
 
 const FIELD_ICONS: Record<UsageId, LucideIcon> = {
@@ -116,7 +117,9 @@ export const PricingCalculator: FC = () => {
             </ol>
 
             <a
-              href="#credits"
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group mt-6 block rounded-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent p-5 text-center transition-shadow hover:shadow-lg"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-primary">Insider offer</p>
