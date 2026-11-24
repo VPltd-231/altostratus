@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { DollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { scrollToSection } from '@/lib/scroll';
 
 interface CreditsButtonProps {
   className?: string;
@@ -12,7 +13,11 @@ interface CreditsButtonProps {
 export const CreditsButton: FC<CreditsButtonProps> = ({ className, onClick, size = 'default' }) => (
   <a
     href="#credits"
-    onClick={onClick}
+    onClick={(e) => {
+      e.preventDefault();
+      scrollToSection('credits');
+      onClick?.();
+    }}
     className={cn('btn-credits', size === 'lg' && 'btn-credits--lg', className)}
   >
     <span className="btn-credits__inner">
