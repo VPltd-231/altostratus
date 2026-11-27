@@ -1,53 +1,7 @@
 import { useState } from 'react';
 import { m } from 'framer-motion';
+import { RECOMMENDATIONS, type Recommendation } from '@/data/content';
 
-interface Recommendation {
-  title: string;
-  provider: string;
-  reason: string;
-  backText: string;
-  gradient: string;
-  icon: string;
-}
-
-const RECOMMENDATIONS: Recommendation[] = [
-  {
-    title: 'Top Free Tier',
-    provider: 'Oracle Cloud',
-    reason: '10TB bandwidth • 24GB ARM compute • Always free',
-    backText:
-      'Oracle offers the most generous always-free tier with ARM Ampere instances, massive bandwidth, and no forced upgrades. Perfect for long-term projects.',
-    gradient: 'from-oracle via-red-600 to-orange-500',
-    icon: '🏆',
-  },
-  {
-    title: 'Easiest Start',
-    provider: 'Google Cloud',
-    reason: 'Clean UI • Built-in guardrails • $300 credits',
-    backText:
-      'GCP provides the smoothest onboarding with intuitive interfaces, automatic cost controls, and excellent documentation for newcomers.',
-    gradient: 'from-gcp via-blue-500 to-green-500',
-    icon: '🎯',
-  },
-  {
-    title: 'Enterprise Ready',
-    provider: 'Microsoft Azure',
-    reason: 'Active Directory • Hybrid cloud • .NET native',
-    backText:
-      'Azure excels in enterprise environments with seamless Microsoft integration, hybrid cloud capabilities, and compliance certifications.',
-    gradient: 'from-azure via-blue-600 to-cyan-500',
-    icon: '🏢',
-  },
-  {
-    title: 'Maximum Scale',
-    provider: 'AWS',
-    reason: '200+ services • Global reach • Mature ecosystem',
-    backText:
-      'AWS offers unmatched service breadth with 200+ services, global infrastructure, and the most mature ecosystem for scaling applications.',
-    gradient: 'from-aws via-orange-500 to-yellow-500',
-    icon: '🚀',
-  },
-];
 
 /**
  * Flip card that works with mouse, keyboard and touch: tap/Enter toggles it,

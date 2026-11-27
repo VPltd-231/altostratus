@@ -1,5 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence, m } from 'framer-motion';
 import { 
   ArrowLeft, ExternalLink, Clock, CreditCard, Server, Database, 
   HardDrive, Wifi, Check, X, Quote, Zap, Shield, AlertTriangle,
@@ -20,6 +20,12 @@ const ProviderDetail = () => {
   const { providerId } = useParams<{ providerId: string }>();
   const provider = cloudProviders.find(p => p.id === providerId);
   const { language } = useLanguage();
+  // React Router gives the page the visitor landed on the key "default". That
+  // page is already on screen as prerendered HTML, so skip the entrance
+  // animations there (they would blank it and fade it back in). Client-side
+  // navigations still animate.
+  const { key } = useLocation();
+  const playIntro = key !== 'default';
 
   if (!provider) {
     return <Navigate to={localizedPath('/', language.code)} replace />;
@@ -72,12 +78,9 @@ const ProviderDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen relative">
-      <SeoHead
-        route={`/provider/${provider.id}`}
-        titleSuffix={provider.name}
-        description={`${provider.name} free tier, requirements, strengths and limitations — analysed by RunRateHost.`}
-      />
+    <AnimatePresence initial={playIntro}>
+    <div key={provider.id} className="min-h-screen relative">
+      <SeoHead route={`/provider/${provider.id}`} />
       <div aria-hidden className="app-bg" />
       
       {/* Navigation Bar */}
@@ -444,6 +447,7 @@ const ProviderDetail = () => {
         </m.section>
       </main>
     </div>
+    </AnimatePresence>
   );
 };
 

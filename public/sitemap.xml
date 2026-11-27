@@ -2,7 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://comparecloud.lovable.app/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -16,11 +17,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -35,11 +35,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -54,11 +53,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -73,11 +71,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -92,11 +89,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -111,12 +107,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -130,11 +125,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -149,11 +143,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -168,11 +161,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -187,11 +179,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -206,11 +197,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/de/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -225,12 +215,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -244,11 +233,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -263,11 +251,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -282,11 +269,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -301,11 +287,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -320,11 +305,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fr/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -339,12 +323,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -358,11 +341,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -377,11 +359,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -396,11 +377,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -415,11 +395,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -434,11 +413,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/es/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -453,12 +431,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -472,11 +449,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -491,11 +467,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -510,11 +485,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -529,11 +503,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -548,11 +521,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/it/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -567,12 +539,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -586,11 +557,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -605,11 +575,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -624,11 +593,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -643,11 +611,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -662,11 +629,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/nl/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -681,12 +647,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -700,11 +665,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -719,11 +683,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -738,11 +701,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -757,11 +719,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -776,11 +737,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pl/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -795,12 +755,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -814,11 +773,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -833,11 +791,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -852,11 +809,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -871,11 +827,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -890,11 +845,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/pt/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -909,12 +863,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -928,11 +881,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -947,11 +899,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -966,11 +917,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -985,11 +935,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -1004,11 +953,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/sv/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -1023,12 +971,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -1042,11 +989,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -1061,11 +1007,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -1080,11 +1025,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -1099,11 +1043,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -1118,11 +1061,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/da/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -1137,12 +1079,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -1156,11 +1097,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -1175,11 +1115,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -1194,11 +1133,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -1213,11 +1151,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -1232,11 +1169,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/fi/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -1251,12 +1187,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -1270,11 +1205,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -1289,11 +1223,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -1308,11 +1241,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -1327,11 +1259,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -1346,11 +1277,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/cs/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -1365,12 +1295,11 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app" />
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://comparecloud.lovable.app/es" />
@@ -1384,11 +1313,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/" />
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro/provider/aws</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/aws" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/aws" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/aws" />
@@ -1403,11 +1331,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/aws" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/aws" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/aws" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro/provider/gcp</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/gcp" />
@@ -1422,11 +1349,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/gcp" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/gcp" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro/provider/azure</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/azure" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/azure" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/azure" />
@@ -1441,11 +1367,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/azure" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/azure" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/azure" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro/provider/oracle</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/oracle" />
@@ -1460,11 +1385,10 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/oracle" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/oracle" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://comparecloud.lovable.app/ro/provider/ibm</loc>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://comparecloud.lovable.app/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="de" href="https://comparecloud.lovable.app/de/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://comparecloud.lovable.app/fr/provider/ibm" />
@@ -1479,7 +1403,5 @@
     <xhtml:link rel="alternate" hreflang="cs" href="https://comparecloud.lovable.app/cs/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="ro" href="https://comparecloud.lovable.app/ro/provider/ibm" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comparecloud.lovable.app/provider/ibm" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>

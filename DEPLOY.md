@@ -105,6 +105,8 @@ ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP
 
 sudo apt update && sudo apt -y upgrade
 sudo apt -y install nginx ufw certbot python3-certbot-nginx rsync
+# Optional, for brotli: then uncomment `brotli_static on;` in deploy/nginx.conf
+# sudo apt -y install libnginx-mod-http-brotli-static
 
 # Host firewall (the security group is still the outer layer)
 sudo ufw allow OpenSSH && sudo ufw allow 'Nginx Full' && sudo ufw --force enable
@@ -159,6 +161,12 @@ curl -sI https://YOUR_DOMAIN/                      # 200, Cache-Control: no-cach
 curl -sI https://YOUR_DOMAIN/assets/<any-hashed-file>.js   # Cache-Control: public, immutable
 curl -s  https://YOUR_DOMAIN/sitemap.xml | head    # URLs use YOUR_DOMAIN
 
+# Prerendered pages: real HTML, per-page title and JSON-LD, no JS needed
+curl -s  https://YOUR_DOMAIN/de/provider/aws | grep -o '<title>.*</title>'
+curl -sI https://YOUR_DOMAIN/provider/aws -H 'Accept-Encoding: gzip' | grep -i content-encoding   # gzip (br if brotli enabled)
+curl -sI https://YOUR_DOMAIN/de/                   # 301 -> /de
+curl -sI https://YOUR_DOMAIN/no-such-page          # 404
+
 npx lighthouse https://YOUR_DOMAIN --only-categories=performance --preset=desktop --view
 ```
 
@@ -172,6 +180,6 @@ ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP '
 
 ### Notes
 
-- Unknown URLs return the app shell with HTTP 200 (the React 404 page renders client-side). For real 404 status codes you would need prerendering; that is a separate piece of work.
+- Every page is prerendered at build time (`scripts/prerender.ts`), so unknown URLs get a real HTTP 404 from `404.html`. After the first deploy, submit `https://YOUR_DOMAIN/sitemap.xml` in Google Search Console and Bing Webmaster Tools, and spot-check a provider page in the [Rich Results Test](https://search.google.com/test/rich-results) and the [Schema Markup Validator](https://validator.schema.org/).
 - `VITE_GUIDE_SIGNUP_URL` is optional. Without it the email-guide form is disabled instead of pretending to send anything.
 - Later improvement: put CloudFront in front of the instance (or move `dist/` to S3 + CloudFront) for edge caching. It needs no code changes.
