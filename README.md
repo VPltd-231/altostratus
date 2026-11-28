@@ -21,12 +21,12 @@ npm run preview
 
 | Variable | Purpose |
 | --- | --- |
-| `VITE_SITE_URL` | Public origin for canonical/hreflang tags, sitemap and robots (e.g. `https://runratehost.com`). |
+| `VITE_SITE_URL` | Public origin for canonical/hreflang tags, sitemap and robots (defaults to `https://runrate.host`). |
 | `VITE_OG_IMAGE` | Absolute URL of the 1200×630 social preview. Defaults to `/og-image.png`. |
 | `BUILD_DATE` | `YYYY-MM-DD` used for sitemap `lastmod` and schema `dateModified`. Defaults to today. |
 | `VITE_GUIDE_SIGNUP_URL` | Endpoint the credits-guide email form POSTs `{ email, source }` to. If unset the form is disabled. |
 
-Example: `VITE_SITE_URL=https://runratehost.com npm run build`
+Example: `VITE_SITE_URL=https://runrate.host npm run build`
 
 ## Performance notes
 

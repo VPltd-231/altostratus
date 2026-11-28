@@ -1,6 +1,7 @@
 import { Cloud, Server, Database, Shield, Zap, ArrowDown } from 'lucide-react';
 import { CloudIcon } from './CloudIcon';
 import { Button } from './ui/button';
+import { CreditsButton } from './CreditsButton';
 import type { ProviderId } from '@/data/cloudProviders';
 
 const BADGES = [
@@ -56,14 +57,17 @@ export const Hero = () => (
         free tiers, hidden fees, and the fastest path to a lower monthly run-rate.
       </p>
 
-      <Button
-        onClick={scrollToPricing}
-        size="lg"
-        className="group mb-10 bg-gradient-to-r from-primary to-primary/80 px-8 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-shadow hover:shadow-xl"
-      >
-        Get Started
-        <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" aria-hidden />
-      </Button>
+      <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Button
+          onClick={scrollToPricing}
+          size="lg"
+          className="group bg-gradient-to-r from-primary to-primary/80 px-8 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-shadow hover:shadow-xl"
+        >
+          Get Started
+          <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" aria-hidden />
+        </Button>
+        <CreditsButton size="lg" />
+      </div>
 
       <ul className="mb-10 flex flex-wrap justify-center gap-3">
         {BADGES.map(({ icon: Icon, label }) => (

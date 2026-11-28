@@ -24,6 +24,7 @@ import {
 } from '../../src/data/content';
 import { INITIAL_USAGE, USAGE_FIELDS, estimateAll } from '../../src/data/pricing';
 import { getSignupSteps } from '../../src/data/signupSteps';
+import { CHECKOUT_URL } from '../../src/lib/links';
 import { languages, localizedPath, type LanguageMeta } from '../../src/lib/languages';
 
 // ---- helpers -----------------------------------------------------------------
@@ -46,6 +47,12 @@ const ext = (href: string, label: string, cls = '') =>
   `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer" class="${cls}">${label}</a>`;
 
 // ---- shared chrome -----------------------------------------------------------
+
+/** Mirrors src/components/CreditsButton.tsx (styles live in index.css). */
+const creditsButton = (cls = '', size: 'default' | 'lg' = 'default') => `
+<a href="#credits" class="btn-credits${size === 'lg' ? ' btn-credits--lg' : ''}${cls ? ` ${cls}` : ''}">
+  <span class="btn-credits__inner">${icon('h-4 w-4')}<span>Get $100'000 Cloud Credits</span></span>
+</a>`;
 
 const logo = (lang: LanguageMeta) => `
 <a href="${localizedPath('/', lang.code)}" class="notranslate flex items-center gap-2.5" translate="no" aria-label="RunRateHost home">
@@ -79,6 +86,7 @@ const homeNav = (lang: LanguageMeta) => `
     <div class="hidden items-center gap-1 md:flex">
       ${each(NAV_LINKS, (l) => `<a href="${l.href}" class="rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 text-muted-foreground hover:bg-secondary hover:text-foreground">${l.label}</a>`)}
       ${languageTrigger(lang)}
+      ${creditsButton('ml-2')}
     </div>
     <div class="flex items-center gap-1 md:hidden">
       ${languageTrigger(lang)}
@@ -105,9 +113,12 @@ const hero = () => `
       RunRateHost benchmarks AWS, Google Cloud, Azure, Oracle, and IBM side-by-side — uncover
       free tiers, hidden fees, and the fastest path to a lower monthly run-rate.
     </p>
-    <a href="#pricing" class="group mb-10 inline-flex h-11 items-center justify-center whitespace-nowrap rounded-md bg-gradient-to-r from-primary to-primary/80 px-8 py-6 text-lg font-semibold text-primary-foreground shadow-lg">
-      Get Started ${icon('ml-2 h-5 w-5')}
-    </a>
+    <div class="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a href="#pricing" class="group inline-flex h-11 items-center justify-center whitespace-nowrap rounded-md bg-gradient-to-r from-primary to-primary/80 px-8 py-6 text-lg font-semibold text-primary-foreground shadow-lg">
+        Get Started ${icon('ml-2 h-5 w-5')}
+      </a>
+      ${creditsButton('', 'lg')}
+    </div>
     <ul class="mb-10 flex flex-wrap justify-center gap-3">
       ${each(['Compute', 'Databases', 'Security', 'Serverless'], (label) => `
       <li class="glass-card flex items-center gap-2 rounded-full px-4 py-2">${icon('h-4 w-4')}<span class="text-sm font-medium">${label}</span></li>`)}
@@ -156,7 +167,7 @@ const providerCard = (p: CloudProvider, lang: LanguageMeta) => `
   </dl>
   <div class="relative z-10 flex gap-2">
     <a href="${localizedPath(`/provider/${p.id}`, lang.code)}" class="flex-1 inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-medium ${p.gradientClass} text-white">Explore ${esc(p.shortName)}</a>
-    ${ext(p.signupUrl, 'Sign Up', 'inline-flex h-10 items-center justify-center rounded-md border-2 px-4 text-sm font-medium')}
+    <a href="${esc(p.signupUrl)}" target="_blank" rel="noopener noreferrer" style="--brand:${p.brandColor}" class="inline-flex h-10 items-center justify-center rounded-md border-2 px-4 text-sm font-medium transition-colors hover:border-[var(--brand)] hover:bg-[var(--brand)] hover:text-white">Sign Up</a>
   </div>
 </article>`;
 
@@ -229,6 +240,11 @@ const pricingSection = () => {
             <span class="text-xl font-bold${i === 0 ? ' text-primary' : ''}">$${e.monthly.toFixed(2)}${i === 0 ? ' <span class="rounded-full bg-primary/20 px-2 py-0.5 text-xs font-medium text-primary">Lowest estimate</span>' : ''}</span>
           </li>`)}
         </ol>
+        <a href="${esc(CHECKOUT_URL)}" target="_blank" rel="noopener noreferrer" class="group mt-6 block rounded-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent p-5 text-center">
+          <p class="text-xs font-semibold uppercase tracking-widest text-primary">Insider offer</p>
+          <p class="mt-1 text-2xl font-extrabold leading-tight sm:text-3xl">Save up to <span class="gradient-text">100%</span> of your initial cloud hosting costs</p>
+          <span class="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md">Join the Exclusive Insider's Club</span>
+        </a>
         <p class="mt-6 text-center text-xs text-muted-foreground">* Estimates are illustrative, based on simplified list prices. Actual costs vary by region, instance type and usage patterns. Always check the provider's own calculator.</p>
       </div>
     </div>
@@ -259,7 +275,7 @@ const creditsSection = () => `
     <div class="glass-card rounded-3xl p-8 sm:p-12">
       <p class="text-xl font-bold mb-2">The startup playbook for free cloud credits</p>
       <p class="text-muted-foreground mb-8">In-depth guide written from experience applying. Learn about eligibility and application steps, tips about how to maximize your chances for success &amp; obtain $100'000 in free credits.</p>
-      ${ext('https://txprocessing.sell.app/product/product-1792183274', 'Get Insider Access', 'inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary via-gcp to-azure px-10 py-4 text-lg font-bold text-white')}
+      ${ext(CHECKOUT_URL, 'Get Insider Access', 'inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary via-gcp to-azure px-10 py-4 text-lg font-bold text-white')}
     </div>
   </div>
 </section>`;

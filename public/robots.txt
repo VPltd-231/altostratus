@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://comparecloud.lovable.app/sitemap.xml
+Sitemap: https://runrate.host/sitemap.xml

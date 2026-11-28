@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import { ChevronRight, Clock, CreditCard, Quote, Server, Database, HardDrive, Wifi, ExternalLink } from 'lucide-react';
@@ -156,7 +156,8 @@ export const ProviderCard: FC<ProviderCardProps> = ({ provider, index }) => {
             <Button
               asChild
               variant="outline"
-              className="group/signup border-2 hover:bg-secondary transition-colors cursor-pointer"
+              className="group/signup border-2 transition-colors cursor-pointer hover:border-[var(--brand)] hover:bg-[var(--brand)] hover:text-white"
+              style={{ '--brand': provider.brandColor } as CSSProperties}
             >
               <a href={provider.signupUrl} target="_blank" rel="noopener noreferrer">
                 <span className="hidden sm:inline">Sign Up</span>

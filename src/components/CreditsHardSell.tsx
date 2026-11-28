@@ -3,8 +3,8 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Sparkles, Zap, ArrowRight, Star, Rocket, TrendingUp, Mail, CheckCircle, Shield, Clock, X, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { CHECKOUT_URL } from '@/lib/links';
 
-const CHECKOUT_URL = 'https://txprocessing.sell.app/product/product-1792183274';
 
 /**
  * Where the email form posts to (a serverless function, Formspree, etc.).
