@@ -92,7 +92,7 @@ Point an `A` record for your domain (and `www`) at the Elastic IP. With Route 53
 ```bash
 cat > /tmp/dns.json <<JSON
 { "Changes": [{ "Action": "UPSERT", "ResourceRecordSet": {
-  "Name": "example.com.", "Type": "A", "TTL": 300,
+  "Name": "runrate.host.", "Type": "A", "TTL": 300,
   "ResourceRecords": [{ "Value": "ELASTIC_IP" }] } }] }
 JSON
 aws route53 change-resource-record-sets --hosted-zone-id ZXXXXXXXXXXXXX --change-batch file:///tmp/dns.json
@@ -105,6 +105,8 @@ ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP
 
 sudo apt update && sudo apt -y upgrade
 sudo apt -y install nginx ufw certbot python3-certbot-nginx rsync
+# Optional, for brotli: then uncomment `brotli_static on;` in deploy/nginx.conf
+# sudo apt -y install libnginx-mod-http-brotli-static
 
 # Host firewall (the security group is still the outer layer)
 sudo ufw allow OpenSSH && sudo ufw allow 'Nginx Full' && sudo ufw --force enable
@@ -124,7 +126,6 @@ scp -i ~/.ssh/my-key.pem deploy/nginx.conf            ubuntu@ELASTIC_IP:/tmp/run
 ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP '
   sudo mv /tmp/runratehost-security-headers.conf /etc/nginx/snippets/runratehost-security-headers.conf &&
   sudo mv /tmp/runratehost.conf /etc/nginx/sites-available/runratehost &&
-  sudo sed -i "s/example.com/YOUR_DOMAIN/g" /etc/nginx/sites-available/runratehost &&
   sudo ln -sf /etc/nginx/sites-available/runratehost /etc/nginx/sites-enabled/runratehost &&
   sudo rm -f /etc/nginx/sites-enabled/default &&
   sudo nginx -t && sudo systemctl reload nginx'
@@ -135,7 +136,7 @@ ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP '
 ```bash
 DEPLOY_HOST=ubuntu@ELASTIC_IP \
 SSH_KEY=~/.ssh/my-key.pem \
-VITE_SITE_URL=https://YOUR_DOMAIN \
+VITE_SITE_URL=https://runrate.host \
 ./deploy/deploy.sh
 ```
 
@@ -147,7 +148,7 @@ Once DNS resolves to the server:
 
 ```bash
 ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP \
-  'sudo certbot --nginx -d YOUR_DOMAIN -d www.YOUR_DOMAIN --redirect -m you@example.com --agree-tos -n'
+  'sudo certbot --nginx -d runrate.host -d www.runrate.host --redirect -m you@example.com --agree-tos -n'
 ```
 
 Certbot installs a renewal timer. Check it with `sudo systemctl status certbot.timer`. After HTTPS works, uncomment the `Strict-Transport-Security` line in `/etc/nginx/snippets/runratehost-security-headers.conf` and run `sudo nginx -t && sudo systemctl reload nginx`.
@@ -155,11 +156,17 @@ Certbot installs a renewal timer. Check it with `sudo systemctl status certbot.t
 ### 6. Verify
 
 ```bash
-curl -sI https://YOUR_DOMAIN/                      # 200, Cache-Control: no-cache
-curl -sI https://YOUR_DOMAIN/assets/<any-hashed-file>.js   # Cache-Control: public, immutable
-curl -s  https://YOUR_DOMAIN/sitemap.xml | head    # URLs use YOUR_DOMAIN
+curl -sI https://runrate.host/                      # 200, Cache-Control: no-cache
+curl -sI https://runrate.host/assets/<any-hashed-file>.js   # Cache-Control: public, immutable
+curl -s  https://runrate.host/sitemap.xml | head    # URLs use runrate.host
 
-npx lighthouse https://YOUR_DOMAIN --only-categories=performance --preset=desktop --view
+# Prerendered pages: real HTML, per-page title and JSON-LD, no JS needed
+curl -s  https://runrate.host/de/provider/aws | grep -o '<title>.*</title>'
+curl -sI https://runrate.host/provider/aws -H 'Accept-Encoding: gzip' | grep -i content-encoding   # gzip (br if brotli enabled)
+curl -sI https://runrate.host/de/                   # 301 -> /de
+curl -sI https://runrate.host/no-such-page          # 404
+
+npx lighthouse https://runrate.host --only-categories=performance --preset=desktop --view
 ```
 
 ### Rollback
@@ -172,6 +179,6 @@ ssh -i ~/.ssh/my-key.pem ubuntu@ELASTIC_IP '
 
 ### Notes
 
-- Unknown URLs return the app shell with HTTP 200 (the React 404 page renders client-side). For real 404 status codes you would need prerendering; that is a separate piece of work.
+- Every page is prerendered at build time (`scripts/prerender.ts`), so unknown URLs get a real HTTP 404 from `404.html`. After the first deploy, submit `https://runrate.host/sitemap.xml` in Google Search Console and Bing Webmaster Tools, and spot-check a provider page in the [Rich Results Test](https://search.google.com/test/rich-results) and the [Schema Markup Validator](https://validator.schema.org/).
 - `VITE_GUIDE_SIGNUP_URL` is optional. Without it the email-guide form is disabled instead of pretending to send anything.
 - Later improvement: put CloudFront in front of the instance (or move `dist/` to S3 + CloudFront) for edge caching. It needs no code changes.

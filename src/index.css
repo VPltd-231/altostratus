@@ -235,6 +235,67 @@
   transform: rotateY(180deg);
 }
 
+/* Header CTA: circling conic-gradient border, flashing hover. CSS only. */
+@property --credits-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-credits {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 9999px;
+  background: conic-gradient(from var(--credits-angle), #38bdf8, #a5f3fc, #fde68a, #f9a8d4, #38bdf8);
+  animation: credits-spin 4s linear infinite;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-credits__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #ffffff, #e0f2fe);
+  color: #0c4a6e;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.btn-credits--lg .btn-credits__inner {
+  padding: 0.9rem 2rem;
+  font-size: 1.125rem;
+}
+
+.btn-credits:hover .btn-credits__inner,
+.btn-credits:focus-visible .btn-credits__inner {
+  animation: credits-flash 0.7s ease-in-out infinite;
+}
+
+.btn-credits:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+@keyframes credits-spin {
+  to { --credits-angle: 360deg; }
+}
+
+@keyframes credits-flash {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12) saturate(1.4); background: #fef9c3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-credits,
+  .btn-credits:hover .btn-credits__inner,
+  .btn-credits:focus-visible .btn-credits__inner {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

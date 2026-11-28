@@ -1,29 +1,10 @@
 import { FC } from 'react';
 import { m } from 'framer-motion';
-import { Shield, Lock, Eye, Database, Globe, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Shield, Lock, Eye, Database, Globe, ArrowRight, CheckCircle2, type LucideIcon } from 'lucide-react';
+import { BENEFITS, type BenefitIcon } from '@/data/content';
 
-const benefits = [
-  {
-    icon: Shield,
-    title: 'End-to-End Encryption',
-    description: 'Every byte of your data is encrypted in transit and at rest. Industry-standard TLS 1.3 and AES-256 protect your business assets across all connected platforms.',
-  },
-  {
-    icon: Lock,
-    title: 'Access Control & Compliance',
-    description: 'Role-based access, MFA enforcement, and SOC 2 / ISO 27001 compliance frameworks ensure only authorized personnel interact with sensitive workloads.',
-  },
-  {
-    icon: Eye,
-    title: 'Audit Trails & Transparency',
-    description: 'Immutable logging across every data touchpoint. Know who accessed what, when, and from where — a non-negotiable for proper data hygiene.',
-  },
-  {
-    icon: Database,
-    title: 'Data Residency & Sovereignty',
-    description: 'Choose where your data lives. Multi-region deployment ensures regulatory compliance while maintaining low-latency access for your global teams.',
-  },
-];
+const ICONS: Record<BenefitIcon, LucideIcon> = { shield: Shield, lock: Lock, eye: Eye, database: Database };
+const benefits = BENEFITS.map((b) => ({ ...b, icon: ICONS[b.icon] }));
 
 export const CustomerBenefits: FC = () => {
   return (

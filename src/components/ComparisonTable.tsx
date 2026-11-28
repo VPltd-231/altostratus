@@ -2,54 +2,14 @@ import { FC, useState } from 'react';
 import { m } from 'framer-motion';
 import { Check, X, Minus } from 'lucide-react';
 import { cloudProviders } from '@/data/cloudProviders';
+import {
+  COMPARISON_CATEGORIES as categories,
+  COMPARISON_DATA as comparisonData,
+  COMPARISON_PROVIDER_IDS as providerIds,
+  type ComparisonCategory,
+} from '@/data/content';
 import { CloudIcon } from './CloudIcon';
 
-type ComparisonCategory = 'compute' | 'storage' | 'database' | 'networking' | 'pricing';
-
-interface ComparisonRow {
-  feature: string;
-  aws: string | boolean;
-  gcp: string | boolean;
-  azure: string | boolean;
-  oracle: string | boolean;
-  ibm: string | boolean;
-  highlight?: string;
-}
-
-const comparisonData: Record<ComparisonCategory, ComparisonRow[]> = {
-  compute: [
-    { feature: 'Free VM Instance', aws: '750 hrs/mo (12 mo)', gcp: 'e2-micro (Always)', azure: '750 hrs/mo (12 mo)', oracle: '2 AMD + ARM 24GB', ibm: 'PaaS only', highlight: 'oracle' },
-    { feature: 'Serverless Functions', aws: '1M/month', gcp: '2M/month', azure: '1M/month', oracle: 'Limited', ibm: 'Limited', highlight: 'gcp' },
-    { feature: 'ARM Support', aws: true, gcp: true, azure: true, oracle: true, ibm: false },
-    { feature: 'Always-on', aws: true, gcp: true, azure: true, oracle: true, ibm: false },
-  ],
-  storage: [
-    { feature: 'Object Storage', aws: '5 GB', gcp: '5 GB', azure: '5 GB', oracle: 'Limited', ibm: 'Limited' },
-    { feature: 'Block Storage', aws: '30 GB', gcp: '30 GB', azure: '64 GB', oracle: '200 GB', ibm: false, highlight: 'oracle' },
-  ],
-  database: [
-    { feature: 'Managed SQL', aws: '750 hrs (12 mo)', gcp: false, azure: 'Limited DTUs', oracle: 'Always Free', ibm: 'Lite tier', highlight: 'oracle' },
-    { feature: 'NoSQL', aws: '25 GB DynamoDB', gcp: 'Firestore', azure: 'Cosmos DB', oracle: false, ibm: 'Cloudant' },
-  ],
-  networking: [
-    { feature: 'Outbound Data', aws: '1 GB/mo', gcp: '1 GB/mo', azure: '15 GB/mo', oracle: '10 TB/mo', ibm: 'None', highlight: 'oracle' },
-    { feature: 'VPC Included', aws: true, gcp: true, azure: true, oracle: true, ibm: true },
-  ],
-  pricing: [
-    { feature: 'Free Credits', aws: false, gcp: '$300', azure: '$200', oracle: '$300', ibm: false, highlight: 'gcp' },
-    { feature: 'Credit Duration', aws: '-', gcp: '90 days', azure: '30 days', oracle: '30 days', ibm: '-', highlight: 'gcp' },
-    { feature: 'Always Free Tier', aws: 'Limited', gcp: true, azure: 'Limited', oracle: true, ibm: true, highlight: 'oracle' },
-    { feature: 'No Auto-Upgrade', aws: false, gcp: true, azure: false, oracle: true, ibm: true },
-  ],
-};
-
-const categories: { id: ComparisonCategory; label: string }[] = [
-  { id: 'compute', label: 'Compute' },
-  { id: 'storage', label: 'Storage' },
-  { id: 'database', label: 'Database' },
-  { id: 'networking', label: 'Networking' },
-  { id: 'pricing', label: 'Pricing' },
-];
 
 const renderCell = (value: string | boolean, providerId: string, isHighlight: boolean) => {
   if (typeof value === 'boolean') {
@@ -69,7 +29,6 @@ const renderCell = (value: string | boolean, providerId: string, isHighlight: bo
 
 export const ComparisonTable: FC = () => {
   const [activeCategory, setActiveCategory] = useState<ComparisonCategory>('compute');
-  const providerIds = ['aws', 'gcp', 'azure', 'oracle', 'ibm'] as const;
 
   return (
     <section className="py-20 px-4">

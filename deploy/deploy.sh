@@ -2,7 +2,7 @@
 # Build locally, upload to the Ubuntu server, switch the `current` symlink atomically.
 #
 #   DEPLOY_HOST=ubuntu@203.0.113.10 SSH_KEY=~/.ssh/my-key.pem \
-#   VITE_SITE_URL=https://example.com ./deploy/deploy.sh
+#   VITE_SITE_URL=https://runrate.host ./deploy/deploy.sh
 set -euo pipefail
 
 : "${DEPLOY_HOST:?Set DEPLOY_HOST, e.g. ubuntu@203.0.113.10}"

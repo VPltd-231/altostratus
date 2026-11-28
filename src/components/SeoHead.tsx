@@ -1,42 +1,32 @@
+import { createElement } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/hooks/use-language';
-import { languages, localizedPath, SITE_URL } from '@/lib/languages';
+import { getHeadTags, getPageSeo, resolveRoute } from '@/lib/seo';
 
 interface SeoHeadProps {
   /** Language-agnostic route, e.g. "/" or "/provider/aws" */
   route: string;
-  titleSuffix?: string;
-  description?: string;
 }
 
-export const SeoHead = ({ route, titleSuffix, description }: SeoHeadProps) => {
+/**
+ * Keeps <head> in sync during client-side navigation. The tags come from
+ * src/lib/seo.ts, the same module the prerender uses, so on first load Helmet
+ * simply adopts the prerendered tags (they carry data-rh) instead of
+ * duplicating them. JSON-LD is only written by the prerender: crawlers fetch
+ * each URL fresh, so it never needs updating client-side.
+ */
+export const SeoHead = ({ route }: SeoHeadProps) => {
   const { language } = useLanguage();
-  const cleanRoute = route.split('#')[0] || '/';
-  const title = titleSuffix ? `${titleSuffix} | ${language.title}` : language.title;
-  const desc = description ?? language.description;
-  const canonical = `${SITE_URL}${localizedPath(cleanRoute, language.code)}`;
+  const page = resolveRoute(route);
+  if (!page) return null;
+
+  const seo = getPageSeo(page, language.code);
 
   return (
     <Helmet>
       <html lang={language.code} />
-      <title>{title}</title>
-      <meta name="description" content={desc} />
-      <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={desc} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:locale" content={language.code} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={desc} />
-      {languages.map((l) => (
-        <link
-          key={l.code}
-          rel="alternate"
-          hrefLang={l.code}
-          href={`${SITE_URL}${localizedPath(cleanRoute, l.code)}`}
-        />
-      ))}
-      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}${localizedPath(cleanRoute, 'en')}`} />
+      <title>{seo.title}</title>
+      {getHeadTags(seo).map(({ tag, attrs }, i) => createElement(tag, { key: i, ...attrs }))}
     </Helmet>
   );
 };

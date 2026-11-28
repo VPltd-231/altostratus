@@ -2,7 +2,8 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  // scripts/prerender/markup.ts writes Tailwind classes into the static HTML.
+  content: ["./index.html", "./src/**/*.{ts,tsx}", "./scripts/prerender/**/*.ts"],
   prefix: "",
   theme: {
     container: {

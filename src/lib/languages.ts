@@ -154,11 +154,16 @@ export const getLanguage = (code?: string): LanguageMeta =>
 
 /**
  * Public origin used for canonical/hreflang tags. Override at build time with
- * VITE_SITE_URL (e.g. https://runratehost.com). `import.meta.env` is undefined
- * when this module runs under plain Node (sitemap script), hence the `?.`.
+ * VITE_SITE_URL (e.g. https://runrate.host). `import.meta.env` is undefined
+ * when this module runs under plain Node (sitemap/prerender scripts), so it
+ * falls back to process.env there.
  */
+const nodeEnv = typeof process !== 'undefined' ? process.env : undefined;
+
 export const SITE_URL = (
-  (import.meta.env?.VITE_SITE_URL as string | undefined) || 'https://comparecloud.lovable.app'
+  (import.meta.env?.VITE_SITE_URL as string | undefined) ||
+  nodeEnv?.VITE_SITE_URL ||
+  'https://runrate.host'
 ).replace(/\/$/, '');
 
 /** Build a URL for a route in a given language. `route` starts with "/" */
